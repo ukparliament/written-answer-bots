@@ -28,4 +28,21 @@ class Question < ApplicationRecord
     end
     tweet_text += "https://questions-statements.parliament.uk/written-questions/detail/#{self.date_tabled}/#{self.uin}"
   end
+  
+  def safe_tweet_text
+    tweet_text = ''
+
+    if self.is_correcting_answer
+      tweet_text += "An earlier answer to a "
+    else
+      tweet_text +=  "A "
+    end
+    tweet_text += "question on #{self.heading} tabled by #{self.asking_member.safe_twitter_reference} on #{self.date_tabled} has been "
+    if self.is_correcting_answer
+      tweet_text += "corrected by #{self.correcting_member.safe_twitter_reference}. "
+    else
+      tweet_text +=  "answered by #{self.answering_member.safe_twitter_reference}. "
+    end
+    tweet_text += "https://questions-statements.parliament.uk/written-questions/detail/#{self.date_tabled}/#{self.uin}"
+  end
 end
