@@ -1,5 +1,7 @@
 class Question < ApplicationRecord
   
+  belongs_to :answering_body
+  
   def asking_member
     Member.all.where( "mnis_id = #{self.asking_member_id}" ).first
   end
