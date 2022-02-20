@@ -5,7 +5,12 @@ require 'net/http'
 task :import_questions => :environment do
   puts "importing questions with answers"
   
-  source = 'https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=2022-01-01&take=1000'
+  # We set the from date to yesterday.
+  from_date = Date.yesterday
+  
+  # We construct the source URL.
+  source = "https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=1000"
+  puts source
   response = Net::HTTP.get_response( URI.parse( source ) )
   data = response.body
   json = JSON.parse( data )
@@ -50,39 +55,64 @@ task :import_questions => :environment do
       answering_body.save
     end
     
-    
-    
-    
-    
-    question = Question.all.where( "date_tabled = '#{date_tabled.to_s}'" ).where( "uin = '#{uin.to_s}'" ).first
-    unless question
-      question = Question.new
-      question.tweeted = false
+    # If the answer is not a holding answer ....
+    if is_holding_answer == false
+      
+      # If the answer is a correction ...
+      if is_correcting_answer
+        
+        # We check if there's an existing question with the same date tabled, uin and date_answer_corrected.
+        question = Question
+          .all
+          .where( "date_tabled = '#{date_tabled.to_s}'" )
+          .where( "uin = '#{uin.to_s}'" )
+          .where( "date_answer_corrected = '#{date_answer_corrected.to_s}'" )
+          .first
+          
+      # Otherwise, if the answer is not a correction ...
+      else
+        
+        # We check if there's an existing question with the same date tabled and uin.
+        question = Question
+          .all
+          .where( "date_tabled = '#{date_tabled.to_s}'" )
+          .where( "uin = '#{uin.to_s}'" )
+          .first
+      end
+      
+      # If this particular answer to the question has not been captured ...
+      unless question
+        
+        # We create a new question / answer ...
+        question = Question.new
+        
+        # ... and set its tweeted status to false.
+        question.tweeted = false
+      end
+      
+      # We set or reset the attribute of the answer to the question.
+      question.question_id = question_id
+      question.asking_member_id = asking_member_id
+      question.house = house
+      question.member_interest = member_interest
+      question.date_tabled = date_tabled
+      question.uin = uin
+      question.question_text = question_text
+      question.is_named_day = is_named_day
+      question.is_holding_answer = is_holding_answer
+      question.is_correcting_answer = is_correcting_answer
+      question.answering_member_id = answering_member_id
+      question.correcting_member_id = correcting_member_id
+      question.date_answered = date_answered
+      question.answer_text = answer_text
+      question.original_answer_text = original_answer_text
+      question.comparable_answer_text = comparable_answer_text
+      question.date_answer_corrected = date_answer_corrected
+      question.date_answer_holding = date_answer_holding
+      question.heading = heading
+      question.answering_body = answering_body
+      question.save   
     end
-    
-    
-    
-    question.question_id = question_id
-    question.asking_member_id = asking_member_id
-    question.house = house
-    question.member_interest = member_interest
-    question.date_tabled = date_tabled
-    question.uin = uin
-    question.question_text = question_text
-    question.is_named_day = is_named_day
-    question.is_holding_answer = is_holding_answer
-    question.is_correcting_answer = is_correcting_answer
-    question.answering_member_id = answering_member_id
-    question.correcting_member_id = correcting_member_id
-    question.date_answered = date_answered
-    question.answer_text = answer_text
-    question.original_answer_text = original_answer_text
-    question.comparable_answer_text = comparable_answer_text
-    question.date_answer_corrected = date_answer_corrected
-    question.date_answer_holding = date_answer_holding
-    question.heading = heading
-    question.answering_body = answering_body
-    question.save   
   end
 end
 
