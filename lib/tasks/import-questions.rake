@@ -10,7 +10,10 @@ task :import_questions => :environment do
   data = response.body
   json = JSON.parse( data )
   
+  # We loop through each question returned ...
   json['results'].each do |question|
+    
+    # ... and extract all values.
     question_id = question['value']['id']
     asking_member_id = question['value']['askingMemberId']
     house = question['value']['house']
@@ -34,11 +37,31 @@ task :import_questions => :environment do
     answering_body_id = question['value']['answeringBodyId']
     answering_body_name = question['value']['answeringBodyName']
     
+    # We find the answering body.
+    answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
+    
+    # If the answering body is not found ...
+    unless answering_body
+      
+      # ... we create a new answering body
+      answering_body = AnsweringBody.new
+      answering_body.mnis_id = answering_body_id
+      answering_body.name = answering_body_name
+      answering_body.save
+    end
+    
+    
+    
+    
+    
     question = Question.all.where( "date_tabled = '#{date_tabled.to_s}'" ).where( "uin = '#{uin.to_s}'" ).first
     unless question
       question = Question.new
       question.tweeted = false
     end
+    
+    
+    
     question.question_id = question_id
     question.asking_member_id = asking_member_id
     question.house = house
@@ -58,8 +81,7 @@ task :import_questions => :environment do
     question.date_answer_corrected = date_answer_corrected
     question.date_answer_holding = date_answer_holding
     question.heading = heading
-    question.answering_body_id = answering_body_id
-    question.answering_body_name = answering_body_name
+    question.answering_body = answering_body
     question.save   
   end
 end
