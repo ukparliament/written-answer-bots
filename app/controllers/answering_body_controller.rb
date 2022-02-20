@@ -1,6 +1,7 @@
 class AnsweringBodyController < ApplicationController
   
   def index
+    @answering_bodies = AnsweringBody.all.order( 'name' )
   end
   
   def show
