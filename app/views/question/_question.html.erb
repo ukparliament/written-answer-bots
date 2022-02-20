@@ -127,11 +127,11 @@
 			</tr>
 			<tr>
 				<%= content_tag( 'td', 'Answering body ID:' ) %>
-				<%= content_tag( 'td', question.answering_body_id ) %>
+				<%= content_tag( 'td', question.answering_body.mnis_id ) %>
 			</tr>
 			<tr>
 				<%= content_tag( 'td', 'Answering body name:' ) %>
-				<%= content_tag( 'td', question.answering_body_name ) %>
+				<%= content_tag( 'td', question.answering_body.name ) %>
 			</tr>
 			<tr>
 				<%= content_tag( 'td', 'Tweeted:' ) %>
