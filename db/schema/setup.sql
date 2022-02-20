@@ -1,5 +1,13 @@
 drop table if exists members;
 drop table if exists questions;
+drop table if exists answering_bodies;
+
+create table answering_bodies (
+	id serial,
+	mnis_id int not null,
+	name varchar(255) not null,
+	primary key (id)
+);
 
 create table members (
 	id serial,
@@ -31,7 +39,7 @@ create table questions (
 	date_answer_holding date,
 	heading varchar(255) not null,
 	answering_body_id int not null,
-	answering_body_name varchar(255) not null,
 	tweeted boolean default false,
+	constraint fk_answering_body foreign key (answering_body_id) references answering_bodies(id),
 	primary key (id)
 );
