@@ -1,0 +1,14 @@
+<%= content_tag( 'h1', 'Members' ) %>
+
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'MNIS ID' ) %>
+			<%= content_tag( 'td', 'Display name' ) %>
+			<%= content_tag( 'td', 'Handle' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'member', :collection => @members %>
+	</tbody>
+</table>
