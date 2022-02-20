@@ -21,8 +21,10 @@ class Question < ApplicationRecord
       tweet_text += "An earlier answer to a "
     else
       tweet_text +=  "A "
-    end
-    tweet_text += "question on #{self.heading} tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled} has been "
+      end
+    tweet_text += "question "
+    tweet_text += "on #{self.heading} " if self.heading
+    tweet_text += "tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled} has been "
     if self.is_correcting_answer
       tweet_text += "corrected by #{self.correcting_member.twitter_reference}. "
     else
@@ -39,7 +41,9 @@ class Question < ApplicationRecord
     else
       tweet_text +=  "A "
     end
-    tweet_text += "question on #{self.heading} tabled by #{self.asking_member.safe_twitter_reference} on #{self.date_tabled} has been "
+    tweet_text += "question "
+    tweet_text += "on #{self.heading} " if self.heading
+    tweet_text += "tabled by #{self.asking_member.safe_twitter_reference} on #{self.date_tabled} has been "
     if self.is_correcting_answer
       tweet_text += "corrected by #{self.correcting_member.safe_twitter_reference}. "
     else
