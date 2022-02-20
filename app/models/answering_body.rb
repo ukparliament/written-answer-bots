@@ -1,0 +1,2 @@
+class AnsweringBody < ApplicationRecord
+end
