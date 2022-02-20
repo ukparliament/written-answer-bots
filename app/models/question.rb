@@ -13,7 +13,14 @@ class Question < ApplicationRecord
   end
   
   def tweet_text
-    tweet_text = "A question on #{self.heading} tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled} has been "
+    tweet_text = ''
+
+    if self.is_correcting_answer
+      tweet_text += "An earlier answer to a "
+    else
+      tweet_text +=  "A "
+    end
+    tweet_text += "question on #{self.heading} tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled} has been "
     if self.is_correcting_answer
       tweet_text += "corrected by #{self.correcting_member.twitter_reference}. "
     else
