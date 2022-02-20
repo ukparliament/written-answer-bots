@@ -37,7 +37,7 @@ create table questions (
 	comparable_answer_text text,
 	date_answer_corrected date,
 	date_answer_holding date,
-	heading varchar(255) not null,
+	heading varchar(255),
 	answering_body_id int not null,
 	tweeted boolean default false,
 	constraint fk_answering_body foreign key (answering_body_id) references answering_bodies(id),
