@@ -24,7 +24,7 @@ class Question < ApplicationRecord
       end
     tweet_text += "question "
     tweet_text += "on #{self.heading} " if self.heading
-    tweet_text += "tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled} has been "
+    tweet_text += "tabled by #{self.asking_member.twitter_reference} on #{self.date_tabled.strftime( '%d-%m-%Y' )} has been "
     if self.is_correcting_answer
       tweet_text += "corrected by #{self.correcting_member.twitter_reference}. "
     else
@@ -43,7 +43,7 @@ class Question < ApplicationRecord
     end
     tweet_text += "question "
     tweet_text += "on #{self.heading} " if self.heading
-    tweet_text += "tabled by #{self.asking_member.safe_twitter_reference} on #{self.date_tabled} has been "
+    tweet_text += "tabled by #{self.asking_member.safe_twitter_reference} on #{self.date_tabled.strftime( '%d-%m-%Y' )} has been "
     if self.is_correcting_answer
       tweet_text += "corrected by #{self.correcting_member.safe_twitter_reference}. "
     else
