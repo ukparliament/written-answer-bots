@@ -7,7 +7,7 @@ access_secret = ENV['LUCH_ACCESS_SECRET']
 
 
 
-task :tweet_dcms => :environment do
+task :tweet_luch => :environment do
   puts "tweeting new answers from LUCH"
   
   # Get all the answered questions from LUCH that have not yet been tweeted.
