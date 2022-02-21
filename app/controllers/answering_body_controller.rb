@@ -6,6 +6,6 @@ class AnsweringBodyController < ApplicationController
   
   def show
     answering_body = params[:answering_body]
-    @questions = Question.all.where( "answering_body_id = #{answering_body}" )
+    @answering_body = AnsweringBody.find( answering_body )
   end
 end
