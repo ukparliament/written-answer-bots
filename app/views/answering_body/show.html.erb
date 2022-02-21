@@ -1,1 +1,3 @@
-<%= render :partial => 'question/question', :collection => @questions %>
+<%= content_tag( 'h1', @answering_body.name ) %>
+
+<%= render :partial => 'question/question', :collection => @answering_body.questions %>
