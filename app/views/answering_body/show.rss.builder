@@ -8,8 +8,6 @@ xml.rss( :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' ) do
     xml.managingEditor( 'somervillea@parliament.uk (Anya Somerville)' )
     xml.pubDate( @answering_body.questions.first.pertinent_date.rfc822 )
     xml.tag!( 'atom:link', { :href => answering_body_show_url( :answering_body => @answering_body, :format => 'rss' ), :rel => 'self', :type => 'application/rss+xml' } )
-    xml.item do
-      xml << render(:partial => 'question/question', :collection => @answering_body.questions )
-    end
+    xml << render(:partial => 'question/question', :collection => @answering_body.questions )
   end
 end
