@@ -5,5 +5,5 @@ xml.item do
   xml.pubDate( question.pertinent_date.rfc822 )
   # xml.tag!("description") { xml.cdata!("&lt;h2&gt;Question&lt;/h2&gt;&lt;p&gt#{question.question_text}&lt;/p&gt&lt;h2&gtQuestion&lt;/h2&gt&lt;p&gt#{question.answer_text}&lt;/p&gt>" ) }
 
-  xml.tag!("description") { xml.cdata!("<p>#{question.question_text}</p> <p>#{question.answer_text}</p>" ) }
+  xml.tag!("description") { xml.cdata!("<p>[Question] #{question.question_text}</p> <p>[Answer] #{question.answer_text}</p>" ) }
 end
