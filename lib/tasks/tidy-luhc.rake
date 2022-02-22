@@ -1,4 +1,4 @@
-task :tweet_luhc => :environment do
+task :tidy_luhc => :environment do
   
   # Get all the answered questions from LUHC.
   questions = Question.where( 'answering_body_id = 21')
