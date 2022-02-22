@@ -1,16 +1,16 @@
 require 'tweetkit'
 
-consumer_key = ENV['LUCH_CONSUMER_KEY']
-consumer_secret = ENV['LUCH_CONSUMER_SECRET']
-access_token = ENV['LUCH_ACCESS_TOKEN']
-access_secret = ENV['LUCH_ACCESS_SECRET']
+consumer_key = ENV['LUHC_CONSUMER_KEY']
+consumer_secret = ENV['LUHC_CONSUMER_SECRET']
+access_token = ENV['LUHC_ACCESS_TOKEN']
+access_secret = ENV['LUHC_ACCESS_SECRET']
 
 
 
-task :tweet_luch => :environment do
-  puts "tweeting new answers from LUCH"
+task :tweet_luhc => :environment do
+  puts "tweeting new answers from LUHC"
   
-  # Get all the answered questions from LUCH that have not yet been tweeted.
+  # Get all the answered questions from LUHC that have not yet been tweeted.
   questions = Question.where( 'answering_body_id = 21').where( tweeted: false )
   puts "tweeting #{questions.size} questions"
   
