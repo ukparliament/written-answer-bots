@@ -9,7 +9,7 @@ task :import_questions => :environment do
   from_date = Date.yesterday
   
   # We construct the source URL.
-  source = "https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=1000"
+  source = "https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=30"
   puts source
   response = Net::HTTP.get_response( URI.parse( source ) )
   data = response.body
