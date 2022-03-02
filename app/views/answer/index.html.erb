@@ -1,5 +1,5 @@
-<%= content_tag( 'h1', 'Latest 20 answers' ) %>
+<h1>Latest 20 answers</h1>
 
-<ol class="no-numbers">
+<ol class="no-numbers" role="list">
 	<%= render :partial => 'answer', :collection => @answers %>
 </ol>
