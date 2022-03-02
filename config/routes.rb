@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'members' => 'member#index', :as => 'member_list'
   
   get 'answers' => 'answer#index', :as => 'answer_list'
+  get 'answers/:answer' => 'answer#show', :as => 'answer_show'
   
   get 'answering-bodies' => 'answering_body#index', :as => 'answering_body_list'
   get 'answering-bodies/:answering_body' => 'answering_body#show', :as => 'answering_body_show'
