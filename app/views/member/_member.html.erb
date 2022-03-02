@@ -3,7 +3,7 @@
 	<%= content_tag( 'td', member.display_name ) %>
 	<td>
 		<% if member.handle -%>
-			<%= link_to( member.handle, "https://twitter.com/#{member.handle}" ) %>
+			<%= link_to( "@" + member.handle, "https://twitter.com/#{member.handle}" ) %>
 		<% end -%>
 	</td>
 </tr>
