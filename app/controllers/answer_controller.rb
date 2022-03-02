@@ -1,7 +1,7 @@
 class AnswerController < ApplicationController
   
   def index
-    @answers = Question.all
+    @answers = Question.all.limit( 20 )
   end
   
   def show
