@@ -4,7 +4,7 @@
 
 <%= content_tag( 'p', link_to( 'RSS', answering_body_show_url( :answering_body => @answering_body, :format => 'rss' ) ) ) %>
 
-<ol class="no-numbers">
+<ol class="no-numbers" role="list">
 	<%= render :partial => 'answer/answer', :collection => @answering_body.questions %>
 </ol>
 
