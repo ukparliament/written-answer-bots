@@ -77,4 +77,22 @@ class Question < ApplicationRecord
     end
     title
   end
+  
+  def styled_title
+    title = ''
+    if self.is_correcting_answer
+      title += "An earlier answer to a "
+    else
+      title +=  "A "
+      end
+    title += "question "
+    title += "on " + self.heading + " " if self.heading
+    title += "tabled by #{self.asking_member.display_name} on #{self.date_tabled.strftime( '%d-%m-%Y' )} has been "
+    if self.is_correcting_answer
+      title += "corrected by #{self.correcting_member.display_name}"
+    else
+      title +=  "answered by #{self.answering_member.display_name}"
+    end
+    title
+  end
 end
