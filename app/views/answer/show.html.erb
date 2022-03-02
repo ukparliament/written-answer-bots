@@ -3,6 +3,14 @@
 <table>
 	<tbody>
 		<tr>
+			<%= content_tag( 'td', 'Heading:' ) %>
+			<% if @answer.heading -%>
+				<%= content_tag( 'td', @answer.heading ) %>
+			<% else -%>
+				<td></td>
+			<% end -%>
+		</tr>
+		<tr>
 			<%= content_tag( 'td', 'Question ID:' ) %>
 			<%= content_tag( 'td', @answer.question_id ) %>
 		</tr>
