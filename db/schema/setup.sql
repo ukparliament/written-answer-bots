@@ -38,6 +38,7 @@ create table questions (
 	date_answer_corrected date,
 	date_answer_holding date,
 	heading varchar(255),
+	pertinent_date date not null,
 	answering_body_id int not null,
 	tweeted boolean default false,
 	constraint fk_answering_body foreign key (answering_body_id) references answering_bodies(id),
