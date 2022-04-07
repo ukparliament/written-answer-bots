@@ -10,7 +10,6 @@ task :import_questions => :environment do
   
   # We construct the source URL.
   source = "https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=100"
-  puts source
   response = Net::HTTP.get_response( URI.parse( source ) )
   data = response.body
   json = JSON.parse( data )
@@ -61,7 +60,7 @@ task :import_questions => :environment do
       # If the answer is a correction ...
       if is_correcting_answer
         
-        # We check if there's an existing question with the same date tabled, uin and date_answer_corrected.
+        # ... we check if there's an existing question with the same date tabled, uin and date_answer_corrected ...
         question = Question
           .all
           .where( "date_tabled = '#{date_tabled.to_s}'" )
@@ -69,15 +68,21 @@ task :import_questions => :environment do
           .where( "date_answer_corrected = '#{date_answer_corrected.to_s}'" )
           .first
           
+        # ... and we set the pertinent date to the date the answer was corrected.
+        pertinent_date = date_answer_corrected
+          
       # Otherwise, if the answer is not a correction ...
       else
         
-        # We check if there's an existing question with the same date tabled and uin.
+        # ... we check if there's an existing question with the same date tabled and uin ...
         question = Question
           .all
           .where( "date_tabled = '#{date_tabled.to_s}'" )
           .where( "uin = '#{uin.to_s}'" )
           .first
+          
+        # ... and we set the pertinent date to the date the question was answered.
+        pertinent_date = date_answered
       end
       
       # If this particular answer to the question has not been captured ...
@@ -111,7 +116,13 @@ task :import_questions => :environment do
       question.date_answer_holding = date_answer_holding
       question.heading = heading
       question.answering_body = answering_body
-      question.save   
+      question.pertinent_date = pertinent_date
+      question.save
+      
+    # Otherwise, if the answer is a holding answer ....
+    else
+      
+      # ... we do nothing.
     end
   end
 end
