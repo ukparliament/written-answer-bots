@@ -11,7 +11,7 @@ task :tweet_dcms => :environment do
   puts "tweeting new answers from DCMS"
   
   # We find the DCMS by its MNIS ID.
-  answering_body = AnsweringBody.find_by_mnis_id( 0 )
+  answering_body = AnsweringBody.find_by_mnis_id( 10 )
   
   # We get all the answered questions from DCMS that have not yet been tweeted.
   answers = answering_body.untweeted_answers
