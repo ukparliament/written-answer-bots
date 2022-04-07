@@ -1,5 +1,15 @@
 <h1><%= @answering_body.name %></h1>
 
+<table>
+	<tbody>
+		<tr>
+			<%= content_tag( 'th', 'MNIS ID:' ) %>
+			<%= content_tag( 'td', @answering_body.mnis_id ) %>
+		</tr>
+	</tbody>
+</table>
+	
+
 <h2>Latest 20 answers</h2>
 
 <%= content_tag( 'p', link_to( 'RSS', answering_body_show_url( :answering_body => @answering_body, :format => 'rss' ) ) ) %>
