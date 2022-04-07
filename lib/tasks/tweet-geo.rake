@@ -11,7 +11,7 @@ task :tweet_geo => :environment do
   puts "tweeting new answers from GEO"
   
   # Get all the answered questions from GEO that have not yet been tweeted.
-  questions = Question.where( 'answering_body_id = x').where( tweeted: false )
+  questions = Question.where( 'answering_body_id = 0').where( tweeted: false )
   puts "tweeting #{questions.size} questions"
   
   # Authenticate
