@@ -11,7 +11,7 @@ task :tweet_fcdo => :environment do
   puts "tweeting new answers from FCDO"
   
   # Get all the answered questions from FCDO that have not yet been tweeted.
-  questions = Question.where( 'answering_body_id = 7').where( tweeted: false )
+  questions = Question.where( 'answering_body_id = 5').where( tweeted: false )
   puts "tweeting #{questions.size} questions"
   
   # Authenticate

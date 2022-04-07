@@ -11,7 +11,7 @@ task :tweet_dcms => :environment do
   puts "tweeting new answers from DCMS"
   
   # Get all the answered questions from DCMS that have not yet been tweeted.
-  questions = Question.where( 'answering_body_id = 9').where( tweeted: false )
+  questions = Question.where( 'answering_body_id = x').where( tweeted: false )
   puts "tweeting #{questions.size} questions"
   
   # Authenticate
