@@ -31,7 +31,7 @@ task :tweet_geo => :environment do
   answers.each do |answer|
     
     # ... post the tweet ...
-    client.post_tweet( text: question.safe_tweet_text )
+    client.post_tweet( text: answer.safe_tweet_text )
     
     # ... and record that the answer has been tweeted.
     answer.tweeted = true
