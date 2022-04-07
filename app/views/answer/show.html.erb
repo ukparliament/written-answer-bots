@@ -32,15 +32,33 @@
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Asking Member display name:' ) %>
-			<%= content_tag( 'td', @answer.asking_member.display_name ) %>
+			<td>
+				<% if @answer.asking_member -%>
+					<%= @answer.asking_member.display_name %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Asking Member handle:' ) %>
-			<%= content_tag( 'td', @answer.asking_member.handle ) %>
+			<td>
+				<% if @answer.asking_member -%>
+					<%= @answer.asking_member.handle %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Asking Member Twitter reference:' ) %>
-			<%= content_tag( 'td', @answer.asking_member.twitter_reference ) %>
+			<td>
+				<% if @answer.asking_member -%>
+					<%= @answer.asking_member.twitter_reference %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Member interest:' ) %>
@@ -80,15 +98,33 @@
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Answering Member display name:' ) %>
-			<%= content_tag( 'td', @answer.answering_member.display_name ) %>
+			<td>
+				<% if @answer.answering_member -%>
+					<%= @answer.answering_member.display_name %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>	
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Answering Member handle:' ) %>
-			<%= content_tag( 'td', @answer.answering_member.handle ) %>
+			<td>
+				<% if @answer.answering_member -%>
+					<%= @answer.answering_member.handle %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Answering Member Twitter reference:' ) %>
-			<%= content_tag( 'td', @answer.answering_member.twitter_reference ) %>
+			<td>
+				<% if @answer.answering_member -%>
+					<%= @answer.answering_member.twitter_reference %>
+				<% else -%>
+					Member not imported
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Correcting Member ID:' ) %>
@@ -96,27 +132,39 @@
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Correcting Member display name:' ) %>
-			<% if @answer.correcting_member_id -%>
-				<%= content_tag( 'td', @answer.correcting_member.display_name ) %>
-			<% else -%>
-				<td></td>
-			<% end -%>
+			<td>
+				<% if @answer.correcting_member_id -%>
+					<% if @answer.correcting_member -%>
+						<%= content_tag( 'td', @answer.correcting_member.display_name ) %>
+					<% else -%>
+						Member not imported
+					<% end -%>
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Correcting Member handle:' ) %>
-			<% if @answer.correcting_member_id -%>
-				<%= content_tag( 'td', @answer.correcting_member.handle ) %>
-			<% else -%>
-				<td></td>
-			<% end -%>
+			<td>
+				<% if @answer.correcting_member_id -%>
+					<% if @answer.correcting_member -%>
+						<%= content_tag( 'td', @answer.correcting_member.handle ) %>
+					<% else -%>
+						Member not imported
+					<% end -%>
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Correcting Member Twitter reference:' ) %>
-			<% if @answer.correcting_member_id -%>
-				<%= content_tag( 'td', @answer.correcting_member.twitter_reference ) %>
-			<% else -%>
-				<td></td>
-			<% end -%>
+			<td>
+				<% if @answer.correcting_member_id -%>
+					<% if @answer.correcting_member -%>
+						<%= content_tag( 'td', @answer.correcting_member.twitter_reference ) %>
+					<% else -%>
+						Member not imported
+					<% end -%>
+				<% end -%>
+			</td>
 		</tr>
 		<tr>
 			<%= content_tag( 'td', 'Answer text:' ) %>
