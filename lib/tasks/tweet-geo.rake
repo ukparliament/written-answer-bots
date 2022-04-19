@@ -11,7 +11,7 @@ task :tweet_geo => :environment do
   puts "tweeting new answers from GEO"
   
   # We find GEO by its MNIS ID.
-  answering_body = AnsweringBody.find_by_mnis_id( 0 )
+  answering_body = AnsweringBody.find_by_mnis_id( 31 )
   
   # We get all the answered questions from GEO that have not yet been tweeted.
   answers = answering_body.untweeted_answers
