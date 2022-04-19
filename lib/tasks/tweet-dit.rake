@@ -7,7 +7,7 @@ access_secret = ENV['DIT_ACCESS_SECRET']
 
 
 
-task :tweet_geo => :environment do
+task :tweet_dit => :environment do
   puts "tweeting new answers from DIT"
   
   # We find DIT by its MNIS ID.
