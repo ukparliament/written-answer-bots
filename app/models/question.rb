@@ -22,7 +22,7 @@ class Question < ApplicationRecord
       title +=  "A "
     end
     title += "question "
-    title += "on #{self.heading} " if self.heading
+    title += "on '#{self.heading}' " if self.heading
     title += "tabled "
     title += "by #{self.asking_member.display_name} " if self.asking_member
     title += "on #{self.date_tabled.strftime( '%d-%m-%Y' )} has been "
@@ -44,7 +44,7 @@ class Question < ApplicationRecord
       tweet_text +=  "A "
       end
     tweet_text += "question "
-    tweet_text += "on #{self.heading} " if self.heading
+    tweet_text += "on '#{self.heading}' " if self.heading
     tweet_text += "tabled "
     tweet_text += "by #{self.asking_member.twitter_reference} " if self.asking_member
     tweet_text += "on #{self.date_tabled.strftime( '%d-%m-%Y' )} has been "
