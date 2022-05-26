@@ -6,7 +6,7 @@
 
 /lib/tasks/tweet-test.rake
 
-
+.DS_Store
 
 # Ignore bundler config.
 /.bundle
