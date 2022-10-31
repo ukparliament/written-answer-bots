@@ -1,4 +1,13 @@
 <%= content_tag( 'h1', 'Answering bodies' ) %>
-<ol role="list" class="no-numbers">
-	<%= render :partial => 'answering_body', :collection => @answering_bodies %>
-</ol>
+
+<table>
+	<thead>
+		<tr>
+			<%= content_tag( 'td', 'MNIS ID' ) %>
+			<%= content_tag( 'td', 'Name' ) %>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'answering_body', :collection => @answering_bodies %>
+	</tbody>
+</table>
