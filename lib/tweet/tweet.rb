@@ -55,11 +55,11 @@ module TWEET
     answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
     
     # We tweet answers from this answering body.
-    tweet( answering_body, consumer_key, consumer_secret, access_token, access_secret ) if answering_body
+    tweet( answering_body, client ) if answering_body
   end
   
   # We tweet from answers from an answering body.
-  def tweet( answering_body, consumer_key, consumer_secret, access_token, access_secret )
+  def tweet( answering_body, client )
   
     # We get all the answered questions from the answering body that have not yet been tweeted.
     answers = answering_body.untweeted_answers
