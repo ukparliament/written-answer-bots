@@ -1,40 +1,10 @@
-require 'tweetkit'
+# We require the tweet code.
+require 'tweet/tweet'
 
-consumer_key = ENV['LUHC_CONSUMER_KEY']
-consumer_secret = ENV['LUHC_CONSUMER_SECRET']
-access_token = ENV['LUHC_ACCESS_TOKEN']
-access_secret = ENV['LUHC_ACCESS_SECRET']
-
-
+# We include tweet code from module.
+include TWEET
 
 task :tweet_luhc => :environment do
   puts "tweeting new answers from LUHC"
-  
-  # We find the LUHC by its MNIS ID.
-  answering_body = AnsweringBody.find_by_mnis_id( 211 )
-  
-  # We get all the answered questions from LUHC that have not yet been tweeted.
-  answers = answering_body.untweeted_answers
-  
-  # We report the number of answers to be tweeted.
-  puts "tweeting #{answers.size} answers"
-  
-  # We authenticate to Twitter.
-  client = Tweetkit::Client.new(
-    consumer_key: consumer_key,
-    consumer_secret: consumer_secret,
-    access_token: access_token,
-    access_token_secret: access_secret
-  )
-  
-  # We loop though all answers ...
-  answers.each do |answer|
-    
-    # ... post the tweet ...
-    client.post_tweet( text: answer.safe_tweet_text )
-    
-    # ... and record that the answer has been tweeted.
-    answer.tweeted = true
-    answer.save
-  end
+  tweet_set_up( 211 )
 end
