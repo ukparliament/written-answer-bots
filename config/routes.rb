@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   
   get 'answering-bodies' => 'answering_body#index', :as => 'answering_body_list'
   get 'answering-bodies/:answering_body' => 'answering_body#show', :as => 'answering_body_show'
+  
+  get 'tasks' => 'task#index', :as => 'task_index'
+  get 'tasks/import-members' => 'task#task_import_members', :as => 'task_import_members'
+  get 'tasks/import-questions' => 'task#task_import_questions', :as => 'task_import_questions'
+  get 'tasks/cleanup' => 'task#task_cleanup', :as => 'task_cleanup'
+  get 'tasks/tweet' => 'task#task_tweet', :as => 'task_tweet'
 end
