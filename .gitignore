@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 /lib/tasks/tweet-test.rake
-
+/lib/tweet/tokens.rb
 .DS_Store
 
 # Ignore bundler config.
