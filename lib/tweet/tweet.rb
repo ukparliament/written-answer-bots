@@ -26,6 +26,7 @@ module TWEET
       consumer_secret = ENV['FCDO_CONSUMER_SECRET']
       access_token = ENV['FCDO_ACCESS_TOKEN']
       access_secret = ENV['FCDO_ACCESS_SECRET']
+      bearer_token = ENV['FCDO_BEARER']
     when 31
       consumer_key = ENV['GEO_CONSUMER_KEY']
       consumer_secret = ENV['GEO_CONSUMER_SECRET']
@@ -55,11 +56,11 @@ module TWEET
     answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
     
     # We tweet answers from this answering body.
-    tweet( answering_body, client ) if answering_body
+    post_status( answering_body, client, bearer_token ) if answering_body
   end
   
-  # We tweet from answers from an answering body.
-  def tweet( answering_body, client )
+  # We tweet answers from an answering body.
+  def post_status( answering_body, client )
   
     # We get all the answered questions from the answering body that have not yet been tweeted.
     answers = answering_body.untweeted_answers
@@ -67,15 +68,35 @@ module TWEET
     # We report the number of answers to be tweeted.
     puts "Tweeting #{answers.size} answers from #{answering_body.name}"
   
-    # We loop though all answers ...
+    # For each answer ...
     answers.each do |answer|
-    
-      # ... post the tweet ...
+      
+      # ... we post the tweet.
       client.post_tweet( text: answer.safe_tweet_text )
-    
-      # ... and record that the answer has been tweeted.
+      
+      # If a bearer token has been passed ...
+      if bearer_token
+        
+        # ... we construct the uri ...
+        uri = URI( "https://botsin.space/api/v1/statuses?status=#{answer.safe_tweet_text}" )
+
+        # ... create the client ...
+        http = Net::HTTP.new( uri.host, uri.port )
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+
+        # ... create  the request ...
+        req =  Net::HTTP::Post.new( uri )
+      
+        # ... add headers ...
+        req.add_field "Authorization", "Bearer #{bearer_token}"
+
+        # ... and fetch the request.
+        res = http.request(req)
+      end
+      
+      # We record that the answer has been tweeted.
       answer.tweeted = true
       answer.save
     end
   end
-end
