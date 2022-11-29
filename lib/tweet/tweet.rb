@@ -59,8 +59,8 @@ module TWEET
     post_status( answering_body, client, bearer_token ) if answering_body
   end
   
-  # We tweet answers from an answering body.
-  def post_status( answering_body, client )
+  # We post status updates for answers from an answering body.
+  def post_status( answering_body, client, bearer_token )
   
     # We get all the answered questions from the answering body that have not yet been tweeted.
     answers = answering_body.untweeted_answers
