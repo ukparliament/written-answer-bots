@@ -26,6 +26,6 @@ class TaskController < ApplicationController
   
   def task_tweet
     answering_body_id = params[:answering_body]
-    tweet_set_up( answering_body_id )
+    tweet_set_up( answering_body_id.to_i )
   end
 end
