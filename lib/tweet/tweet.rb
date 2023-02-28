@@ -16,6 +16,7 @@ module TWEET
       consumer_secret = ENV['DFE_CONSUMER_SECRET']
       access_token = ENV['DFE_ACCESS_TOKEN']
       access_secret = ENV['DFE_ACCESS_SECRET']
+      bearer_token = ENV['DFE_BEARER']
     when 202
       consumer_key = ENV['DIT_CONSUMER_KEY']
       consumer_secret = ENV['DIT_CONSUMER_SECRET']
@@ -32,16 +33,19 @@ module TWEET
       consumer_secret = ENV['GEO_CONSUMER_SECRET']
       access_token = ENV['GEO_ACCESS_TOKEN']
       access_secret = ENV['GEO_ACCESS_SECRET']
+      bearer_token = ENV['GEO_BEARER']
     when 211
       consumer_key = ENV['LUHC_CONSUMER_KEY']
       consumer_secret = ENV['LUHC_CONSUMER_SECRET']
       access_token = ENV['LUHC_ACCESS_TOKEN']
       access_secret = ENV['LUHC_ACCESS_SECRET']
+      bearer_token = ENV['LUHC_BEARER']
     when 23
       consumer_key = ENV['OPM_CONSUMER_KEY']
       consumer_secret = ENV['OPM_CONSUMER_SECRET']
       access_token = ENV['OPM_ACCESS_TOKEN']
       access_secret = ENV['OPM_ACCESS_SECRET']
+      bearer_token = ENV['OPM_BEARER']
     end
     
     # We authenticate to Twitter.
