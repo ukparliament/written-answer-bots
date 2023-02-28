@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 #gem 'rails', '7.0.2.4'
 
 
-ruby '3.0.3'
+ruby '3.2.1'
 
 gem 'tweetkit'
 
