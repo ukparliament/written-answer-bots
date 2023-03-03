@@ -4,6 +4,13 @@ module TWEET
   
   def tweet_set_up( answering_body_id )
     
+    # We up the authentication tokens as empty strings.
+    consumer_key = ''
+    consumer_secret = ''
+    access_token = ''
+    access_secret = ''
+    bearer_token = ''
+    
     # We check the answering body and set the oauth keys.
     case answering_body_id
     when 10
@@ -168,8 +175,24 @@ module TWEET
       bearer_token = ENV['WO_BEARER']
     end
     
+    # We find the answering body by its MNIS ID.
+    answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
+    
+    # We tweet answers from this answering body.
+    post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token ) if answering_body
+  end
+  
+  # We post status updates for answers from an answering body.
+  def post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token )
+  
+    # We get all the answered questions from the answering body that have not yet been tweeted.
+    answers = answering_body.untweeted_answers
+  
+    # We report the number of answers to be tweeted.
+    puts "Tweeting #{answers.size} answers from #{answering_body.name}"
+    
     # If we've set the Twitter credentials ...
-    if consumer_key ...
+    unless consumer_key.empty?
     
       # ... we authenticate to Twitter.
       client = Tweetkit::Client.new(
@@ -178,35 +201,13 @@ module TWEET
         access_token: access_token,
         access_token_secret: access_secret
       )
-      
-    # Otherwise ...
-    else
-      
-      # ... we set the client to nil.
-      client = nil
     end
-    
-    # We find the answering body by its MNIS ID.
-    answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
-    
-    # We tweet answers from this answering body.
-    post_status( answering_body, client, bearer_token ) if answering_body
-  end
-  
-  # We post status updates for answers from an answering body.
-  def post_status( answering_body, client, bearer_token )
-  
-    # We get all the answered questions from the answering body that have not yet been tweeted.
-    answers = answering_body.untweeted_answers
-  
-    # We report the number of answers to be tweeted.
-    puts "Tweeting #{answers.size} answers from #{answering_body.name}"
   
     # For each answer ...
     answers.each do |answer|
       
-      # ... if we've authenticated to Twitter ...
-      if client
+      # ... if we've set the Twitter credentials ...
+      unless consumer_key.empty?
         
         # ... we post the tweet.
         client.post_tweet( text: answer.safe_tweet_text )
