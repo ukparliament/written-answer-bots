@@ -220,8 +220,13 @@ module TWEET
       # If a bearer token has been passed ...
       unless bearer_token.empty?
         
+        # ... we encode the answer text.
+        answer_text = answer.safe_tweet_text
+        parser = URI::Parser.new
+        answer_text = parser.escape( answer_text )
+        
         # ... we construct the uri ...
-        uri = URI( "https://botsin.space/api/v1/statuses?status=#{URI.encode( answer.safe_tweet_text )}" )
+        uri = URI( "https://botsin.space/api/v1/statuses?status=#{answer_text}" )
 
         # ... create the client ...
         http = Net::HTTP.new( uri.host, uri.port )
