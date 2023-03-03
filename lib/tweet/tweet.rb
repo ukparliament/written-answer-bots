@@ -206,7 +206,11 @@ module TWEET
     # For each answer ...
     answers.each do |answer|
       
-      # ... if we've set the Twitter credentials ...
+      # ... we record that the answer has been tweeted.
+      answer.tweeted = true
+      answer.save
+      
+      # If we've set the Twitter credentials ...
       unless consumer_key.empty?
         
         # ... we post the tweet.
@@ -217,7 +221,7 @@ module TWEET
       unless bearer_token.empty?
         
         # ... we construct the uri ...
-        uri = URI( "https://botsin.space/api/v1/statuses?status=#{answer.safe_tweet_text}" )
+        uri = URI( "https://botsin.space/api/v1/statuses?status=#{URI.encode( answer.safe_tweet_text )}" )
 
         # ... create the client ...
         http = Net::HTTP.new( uri.host, uri.port )
@@ -233,10 +237,6 @@ module TWEET
         # ... and fetch the request.
         res = http.request(req)
       end
-      
-      # We record that the answer has been tweeted.
-      answer.tweeted = true
-      answer.save
     end
   end
 end
