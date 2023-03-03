@@ -173,6 +173,36 @@ module TWEET
       #access_token = ENV['WO_ACCESS_TOKEN']
       #access_secret = ENV['WO_ACCESS_SECRET']
       bearer_token = ENV['WO_BEARER']
+    when 213
+      #consumer_key = ENV['RANDR_CONSUMER_KEY']
+      #consumer_secret = ENV['RANDR_CONSUMER_SECRET']
+      #access_token = ENV['RANDR_ACCESS_TOKEN']
+      #access_secret = ENV['RANDR_ACCESS_SECRET']
+      bearer_token = ENV['RANDR_BEARER']
+    when 214
+      #consumer_key = ENV['DBT_CONSUMER_KEY']
+      #consumer_secret = ENV['DBT_CONSUMER_SECRET']
+      #access_token = ENV['DBT_ACCESS_TOKEN']
+      #access_secret = ENV['DBT_ACCESS_SECRET']
+      bearer_token = ENV['DBT_BEARER']
+    when 215
+      #consumer_key = ENV['DESNZ_CONSUMER_KEY']
+      #consumer_secret = ENV['DESNZ_CONSUMER_SECRET']
+      #access_token = ENV['DESNZ_ACCESS_TOKEN']
+      #access_secret = ENV['DESNZ_ACCESS_SECRET']
+      bearer_token = ENV['DESNZ_BEARER']
+    when 216
+      #consumer_key = ENV['DSIT_CONSUMER_KEY']
+      #consumer_secret = ENV['DSIT_CONSUMER_SECRET']
+      #access_token = ENV['DSIT_ACCESS_TOKEN']
+      #access_secret = ENV['DSIT_ACCESS_SECRET']
+      bearer_token = ENV['DSIT_BEARER']
+    when 217
+      #consumer_key = ENV['DCMS_CONSUMER_KEY']
+      #consumer_secret = ENV['DCMS_CONSUMER_SECRET']
+      #access_token = ENV['DCMS_ACCESS_TOKEN']
+      #access_secret = ENV['DCMS_ACCESS_SECRET']
+      bearer_token = ENV['DCMS_BEARER']
     end
     
     # We find the answering body by its MNIS ID.
