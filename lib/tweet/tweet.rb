@@ -214,7 +214,7 @@ module TWEET
       end
       
       # If a bearer token has been passed ...
-      if bearer_token
+      unless bearer_token.empty?
         
         # ... we construct the uri ...
         uri = URI( "https://botsin.space/api/v1/statuses?status=#{answer.safe_tweet_text}" )
