@@ -89,7 +89,7 @@ module TWEET
       #access_token = ENV['DWP_ACCESS_TOKEN']
       #access_secret = ENV['DWP_ACCESS_SECRET']
       bearer_token = ENV['DWP_BEARER']
-    when 29
+    when 17
       #consumer_key = ENV['DHSC_CONSUMER_KEY']
       #consumer_secret = ENV['DHSC_CONSUMER_SECRET']
       #access_token = ENV['DHSC_ACCESS_TOKEN']
