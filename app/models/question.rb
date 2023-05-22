@@ -27,7 +27,7 @@ class Question < ApplicationRecord
       subject_hashtag = ''
       
       # We split the subject on spaces to tokenise into words.
-      subject.split( ' ' ).each do |word|
+      subject.split( /[\s,-]/ ).each do |word|
         
         # If the word is longer than one character ...
         if word.length > 1
