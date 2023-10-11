@@ -228,7 +228,7 @@ module TWEET
     puts "Tweeting #{answers.size} answers from #{answering_body.name}"
     
     # If we've set the Twitter credentials ...
-    unless consumer_key.empty?
+    if consumer_key
     
       # ... we authenticate to Twitter.
       client = Tweetkit::Client.new(
@@ -247,14 +247,14 @@ module TWEET
       answer.save
       
       # If we've set the Twitter credentials ...
-      unless consumer_key.empty?
+      if consumer_key
         
         # ... we post the tweet.
-        client.post_tweet( text: answer.safe_tweet_text )
+        #client.post_tweet( text: answer.safe_tweet_text )
       end
       
       # If a bearer token has been passed ...
-      unless bearer_token.empty?
+      if bearer_token
         
         # ... we encode the answer text.
         answer_text = answer.safe_tweet_text
@@ -276,11 +276,11 @@ module TWEET
         req.add_field "Authorization", "Bearer #{bearer_token}"
 
         # ... and fetch the request.
-        res = http.request(req)
+        #res = http.request(req)
       end
       
       # If the bluesky handle has been passed ...
-      unless bluesky_handle.empty?
+      if bluesky_handle
         
         # ... we attempt to authenticate.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.server.createSession' )
@@ -311,14 +311,6 @@ module TWEET
         body = wrapper
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
         response = Net::HTTP.post(uri, body.to_json, headers)
-      
-      
-      
-      
-      
-      
-      bluesky_handle = ENV['FCDO_BLUESKY_HANDLE']
-      bluesky_app_password = ENV['BLUESKY_APP_PASSWORD']
       end
     end
   end
