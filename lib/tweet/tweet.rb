@@ -215,7 +215,7 @@ module TWEET
     answering_body = AnsweringBody.find_by_mnis_id( answering_body_id )
     
     # We tweet answers from this answering body.
-    post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token ) if answering_body
+    post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token, bluesky_handle, bluesky_app_password ) if answering_body
   end
   
   # We post status updates for answers from an answering body.
