@@ -1,4 +1,6 @@
 require 'tweetkit'
+require 'net/http'
+require 'json'
 
 module TWEET
   
@@ -10,6 +12,8 @@ module TWEET
     access_token = ''
     access_secret = ''
     bearer_token = ''
+    bluesky_handle = ''
+    bluesky_app_password = ''
     
     # We check the answering body and set the oauth keys.
     case answering_body_id
@@ -35,6 +39,8 @@ module TWEET
       access_token = ENV['FCDO_ACCESS_TOKEN']
       access_secret = ENV['FCDO_ACCESS_SECRET']
       bearer_token = ENV['FCDO_BEARER']
+      bluesky_handle = ENV['FCDO_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['FCDO_BLUESKY_APP_PASSWORD']
     when 31
       consumer_key = ENV['GEO_CONSUMER_KEY']
       consumer_secret = ENV['GEO_CONSUMER_SECRET']
@@ -213,7 +219,7 @@ module TWEET
   end
   
   # We post status updates for answers from an answering body.
-  def post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token )
+  def post_status( answering_body, consumer_key, consumer_secret, access_token, access_secret, bearer_token, bluesky_handle, bluesky_app_password )
   
     # We get all the answered questions from the answering body that have not yet been tweeted.
     answers = answering_body.untweeted_answers
@@ -271,6 +277,48 @@ module TWEET
 
         # ... and fetch the request.
         res = http.request(req)
+      end
+      
+      # If the bluesky handle has been passed ...
+      unless bluesky_handle.empty?
+        
+        # ... we attempt to authenticate.
+        uri = URI( 'https://bsky.social/xrpc/com.atproto.server.createSession' )
+        body = { "identifier": bluesky_handle, "password": bluesky_app_password }
+        headers = { 'Content-Type': 'application/json' }
+        response = Net::HTTP.post( uri, body.to_json, headers )
+
+        # We grab the access tokens from the JSON response.
+        access_jwt = JSON.parse( response.body )['accessJwt']
+        did = JSON.parse( response.body )['did']
+
+        # We construct the post.
+        post = {
+            "$type": "app.bsky.feed.post",
+            "text": answer.safe_tweet_text,
+            "createdAt": Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
+        }
+
+        # We construct the post wrapper.
+        wrapper = {
+          "repo": did,
+          "collection": "app.bsky.feed.post",
+          "record": post,
+        }
+
+        # We attempt to post.
+        uri = URI('https://bsky.social/xrpc/com.atproto.repo.createRecord')
+        body = wrapper
+        headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
+        response = Net::HTTP.post(uri, body.to_json, headers)
+      
+      
+      
+      
+      
+      
+      bluesky_handle = ENV['FCDO_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['BLUESKY_APP_PASSWORD']
       end
     end
   end
