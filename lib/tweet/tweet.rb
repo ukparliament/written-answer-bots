@@ -250,7 +250,7 @@ module TWEET
       if consumer_key
         
         # ... we post the tweet.
-        #client.post_tweet( text: answer.safe_tweet_text )
+        client.post_tweet( text: answer.safe_tweet_text )
       end
       
       # If a bearer token has been passed ...
@@ -276,7 +276,7 @@ module TWEET
         req.add_field "Authorization", "Bearer #{bearer_token}"
 
         # ... and fetch the request.
-        #res = http.request(req)
+        res = http.request(req)
       end
       
       # If the bluesky handle has been passed ...
