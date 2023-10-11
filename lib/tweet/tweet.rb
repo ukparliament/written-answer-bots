@@ -28,6 +28,8 @@ module TWEET
       access_token = ENV['DFE_ACCESS_TOKEN']
       access_secret = ENV['DFE_ACCESS_SECRET']
       bearer_token = ENV['DFE_BEARER']
+      bluesky_handle = ENV['DFE_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DFE_BLUESKY_APP_PASSWORD']
     when 202
       consumer_key = ENV['DIT_CONSUMER_KEY']
       consumer_secret = ENV['DIT_CONSUMER_SECRET']
