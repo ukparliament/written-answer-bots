@@ -35,6 +35,8 @@ module TWEET
       consumer_secret = ENV['DIT_CONSUMER_SECRET']
       access_token = ENV['DIT_ACCESS_TOKEN']
       access_secret = ENV['DIT_ACCESS_SECRET']
+      bluesky_handle = ENV['DIT_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DIT_BLUESKY_APP_PASSWORD']
     when 208
       consumer_key = ENV['FCDO_CONSUMER_KEY']
       consumer_secret = ENV['FCDO_CONSUMER_SECRET']
