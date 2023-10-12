@@ -195,6 +195,8 @@ module TWEET
       #access_token = ENV['DBT_ACCESS_TOKEN']
       #access_secret = ENV['DBT_ACCESS_SECRET']
       bearer_token = ENV['DBT_BEARER']
+      bluesky_handle = ENV['DBT_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DBT_BLUESKY_APP_PASSWORD']
     when 215
       #consumer_key = ENV['DESNZ_CONSUMER_KEY']
       #consumer_secret = ENV['DESNZ_CONSUMER_SECRET']
