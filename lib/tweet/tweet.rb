@@ -1,6 +1,7 @@
 require 'tweetkit'
 require 'net/http'
 require 'json'
+require 'uri'
 
 module TWEET
   
@@ -196,7 +197,7 @@ module TWEET
       #access_secret = ENV['DBT_ACCESS_SECRET']
       bearer_token = ENV['DBT_BEARER']
       bluesky_handle = ENV['DBT_BLUESKY_HANDLE']
-      bluesky_app_password = ENV['DBT_BLUESKY_APP_PASSWORD']
+      bluesky_app_password = ENV['DBT_BLUESKY_APP_PASSWORD'] 
     when 215
       #consumer_key = ENV['DESNZ_CONSUMER_KEY']
       #consumer_secret = ENV['DESNZ_CONSUMER_SECRET']
@@ -297,12 +298,16 @@ module TWEET
         # We grab the access tokens from the JSON response.
         access_jwt = JSON.parse( response.body )['accessJwt']
         did = JSON.parse( response.body )['did']
+        
+        # We construct the link facet.
+        facets = create_facets( answer.safe_tweet_text )
 
         # We construct the post.
         post = {
             "$type": "app.bsky.feed.post",
             "text": answer.safe_tweet_text,
             "createdAt": Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
+            "facets": facets.to_json
         }
 
         # We construct the post wrapper.
@@ -316,8 +321,41 @@ module TWEET
         uri = URI('https://bsky.social/xrpc/com.atproto.repo.createRecord')
         body = wrapper
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
-        response = Net::HTTP.post(uri, body.to_json, headers)
+        response = Net::HTTP.post( uri, body.to_json, headers )
       end
     end
   end
+  
+  # A method to construct the link facet for Bluesky.
+  def create_facets( text )
+    
+    # We create an array to hold the facets.
+    facets = []
+
+    # We define the regex pattern to match a link.
+    link_pattern = URI.regexp
+
+    # Find links
+    text.enum_for( :scan, link_pattern ).each do |m|
+      index_start = Regexp.last_match.offset(0).first
+      index_end = Regexp.last_match.offset(0).last - 1
+      facets.push(
+        '$type' => 'app.bsky.richtext.facet',
+        'index' => {
+          'byteStart' => index_start,
+          'byteEnd' => index_end,
+        },
+        'features' => [
+          {
+            '$type' => 'app.bsky.richtext.facet#link',
+            'url' => m.join("").strip.sub( 'httpsq', 'https://q' ) # this is the matched link
+          },
+        ],
+      )
+    end
+    
+    # We return the matched facets.
+    facets
+  end
 end
+
