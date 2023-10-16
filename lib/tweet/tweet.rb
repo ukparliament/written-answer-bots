@@ -307,7 +307,7 @@ module TWEET
             "$type": "app.bsky.feed.post",
             "text": answer.safe_tweet_text,
             "createdAt": Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
-            "facets": facets.to_json
+            "facets": facets
         }
 
         # We construct the post wrapper.
