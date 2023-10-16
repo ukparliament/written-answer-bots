@@ -299,35 +299,39 @@ module TWEET
         access_jwt = JSON.parse( response.body )['accessJwt']
         did = JSON.parse( response.body )['did']
         
-        # We construct the link facet.
+        # We construct the link facets.
         facets = create_facets( answer.safe_tweet_text )
-
+        
         # We construct the post.
         post = {
             "$type": "app.bsky.feed.post",
             "text": answer.safe_tweet_text,
             "createdAt": Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
-            "facets": facets
+            "facets": facets,
         }
 
-        # We construct the post wrapper.
-        wrapper = {
+        # We construct the body.
+        body = {
           "repo": did,
           "collection": "app.bsky.feed.post",
           "record": post,
         }
+        
+        # We convert the body to JSON.
+        body = body.to_json
 
         # We attempt to post.
-        uri = URI('https://bsky.social/xrpc/com.atproto.repo.createRecord')
-        body = wrapper
+        uri = URI( 'https://bsky.social/xrpc/com.atproto.repo.createRecord' )
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
-        response = Net::HTTP.post( uri, body.to_json, headers )
+        response = Net::HTTP.post( uri, body, headers )
       end
     end
   end
   
-  # A method to construct the link facet for Bluesky.
-  def create_facets( text )
+
+  
+  # ## A method to construct the link facet for Bluesky.
+  def test_create_facets( text )
     
     # We create an array to hold the facets.
     facets = []
@@ -335,7 +339,7 @@ module TWEET
     # We define the regex pattern to match a link.
     link_pattern = URI.regexp
 
-    # Find links
+    # We find the links
     text.enum_for( :scan, link_pattern ).each do |m|
       index_start = Regexp.last_match.offset(0).first
       index_end = Regexp.last_match.offset(0).last - 1
@@ -348,7 +352,7 @@ module TWEET
         'features' => [
           {
             '$type' => 'app.bsky.richtext.facet#link',
-            'url' => m.join("").strip.sub( 'httpsq', 'https://q' ) # this is the matched link
+            'uri' => m.join("").strip.sub( 'httpsq', 'https://q' ) # this is the matched link
           },
         ],
       )
