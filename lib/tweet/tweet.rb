@@ -331,7 +331,7 @@ module TWEET
 
   
   # ## A method to construct the link facet for Bluesky.
-  def test_create_facets( text )
+  def create_facets( text )
     
     # We create an array to hold the facets.
     facets = []
