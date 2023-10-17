@@ -342,7 +342,7 @@ module TWEET
     # We find the links
     text.enum_for( :scan, link_pattern ).each do |m|
       index_start = Regexp.last_match.offset(0).first
-      index_end = Regexp.last_match.offset(0).last - 1
+      index_end = Regexp.last_match.offset(0).last
       facets.push(
         '$type' => 'app.bsky.richtext.facet',
         'index' => {
