@@ -331,6 +331,8 @@ module TWEET
 
   
   # ## A method to construct the link facet for Bluesky.
+  # [ATProtocol documentation](https://atproto.com/blog/create-post#mentions-and-links)
+  # [Code copied and adapted from GitHub](https://github.com/ShreyanJain9/bskyrb/issues/3)
   def create_facets( text )
     
     # We create an array to hold the facets.
@@ -339,7 +341,7 @@ module TWEET
     # We define the regex pattern to match a link.
     link_pattern = URI.regexp
 
-    # We find the links
+    # We find the links.
     text.enum_for( :scan, link_pattern ).each do |m|
       index_start = Regexp.last_match.offset(0).first
       index_end = Regexp.last_match.offset(0).last
