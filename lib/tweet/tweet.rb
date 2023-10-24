@@ -23,6 +23,8 @@ module TWEET
       consumer_secret = ENV['DCMS_CONSUMER_SECRET']
       access_token = ENV['DCMS_ACCESS_TOKEN']
       access_secret = ENV['DCMS_ACCESS_SECRET']
+      bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD']
     when 60
       consumer_key = ENV['DFE_CONSUMER_KEY']
       consumer_secret = ENV['DFE_CONSUMER_SECRET']
@@ -58,6 +60,8 @@ module TWEET
       access_token = ENV['LUHC_ACCESS_TOKEN']
       access_secret = ENV['LUHC_ACCESS_SECRET']
       bearer_token = ENV['LUHC_BEARER']
+      bluesky_handle = ENV['DLUHC_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DLUHC_BLUESKY_APP_PASSWORD']
     when 23
       consumer_key = ENV['OPM_CONSUMER_KEY']
       consumer_secret = ENV['OPM_CONSUMER_SECRET']
@@ -88,18 +92,24 @@ module TWEET
       #access_token = ENV['DEFRA_ACCESS_TOKEN']
       #access_secret = ENV['DEFRA_ACCESS_SECRET']
       bearer_token = ENV['DEFRA_BEARER']
+      bluesky_handle = ENV['DEFRA_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DEFRA_BLUESKY_APP_PASSWORD']
     when 27
       #consumer_key = ENV['DFT_CONSUMER_KEY']
       #consumer_secret = ENV['DFT_CONSUMER_SECRET']
       #access_token = ENV['DFT_ACCESS_TOKEN']
       #access_secret = ENV['DFT_ACCESS_SECRET']
       bearer_token = ENV['DFT_BEARER']
+      bluesky_handle = ENV['DFT_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DFT_BLUESKY_APP_PASSWORD']
     when 29
       #consumer_key = ENV['DWP_CONSUMER_KEY']
       #consumer_secret = ENV['DWP_CONSUMER_SECRET']
       #access_token = ENV['DWP_ACCESS_TOKEN']
       #access_secret = ENV['DWP_ACCESS_SECRET']
       bearer_token = ENV['DWP_BEARER']
+      bluesky_handle = ENV['DWP_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DWP_BLUESKY_APP_PASSWORD']
     when 17
       #consumer_key = ENV['DHSC_CONSUMER_KEY']
       #consumer_secret = ENV['DHSC_CONSUMER_SECRET']
