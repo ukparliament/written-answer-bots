@@ -23,8 +23,6 @@ module TWEET
       consumer_secret = ENV['DCMS_CONSUMER_SECRET']
       access_token = ENV['DCMS_ACCESS_TOKEN']
       access_secret = ENV['DCMS_ACCESS_SECRET']
-      bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
-      bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD']
     when 60
       consumer_key = ENV['DFE_CONSUMER_KEY']
       consumer_secret = ENV['DFE_CONSUMER_SECRET']
@@ -226,6 +224,8 @@ module TWEET
       #access_token = ENV['DCMS_ACCESS_TOKEN']
       #access_secret = ENV['DCMS_ACCESS_SECRET']
       bearer_token = ENV['DCMS_BEARER']
+      bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD']
     end
     
     # We find the answering body by its MNIS ID.
