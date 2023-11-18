@@ -354,8 +354,6 @@ module TWEET
         uri = URI( 'https://bsky.social/xrpc/com.atproto.repo.createRecord' )
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
         response = Net::HTTP.post( uri, body, headers )
-        
-        puts response.inspect
       end
     end
   end
