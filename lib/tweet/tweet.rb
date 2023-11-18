@@ -319,24 +319,18 @@ module TWEET
       # If the bluesky handle has been passed ...
       if bluesky_handle
         
-        puts "posting bluesky"
-        
-        puts "xxx#{bluesky_handle}xxx"
-        puts "xxx#{bluesky_app_password}xxx"
-        
-        
-        
         # ... we attempt to authenticate.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.server.createSession' )
         body = { "identifier": bluesky_handle, "password": bluesky_app_password }
         headers = { 'Content-Type': 'application/json' }
         response = Net::HTTP.post( uri, body.to_json, headers )
         
-        puts response.inspect
-
         # We grab the access tokens from the JSON response.
         access_jwt = JSON.parse( response.body )['accessJwt']
         did = JSON.parse( response.body )['did']
+        
+        puts access_jwt
+        puts did
         
         # We construct the link facets.
         facets = create_facets( answer.safe_tweet_text )
@@ -362,7 +356,9 @@ module TWEET
         # We attempt to post.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.repo.createRecord' )
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
-        #response = Net::HTTP.post( uri, body, headers )
+        response = Net::HTTP.post( uri, body, headers )
+        
+        puts response.inspect
       end
     end
   end
