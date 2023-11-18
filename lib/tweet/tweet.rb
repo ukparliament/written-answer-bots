@@ -319,11 +319,15 @@ module TWEET
       # If the bluesky handle has been passed ...
       if bluesky_handle
         
+        puts "posting bluesky"
+        
         # ... we attempt to authenticate.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.server.createSession' )
         body = { "identifier": bluesky_handle, "password": bluesky_app_password }
         headers = { 'Content-Type': 'application/json' }
         response = Net::HTTP.post( uri, body.to_json, headers )
+        
+        puts response.inspect
 
         # We grab the access tokens from the JSON response.
         access_jwt = JSON.parse( response.body )['accessJwt']
