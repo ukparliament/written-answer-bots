@@ -313,7 +313,7 @@ module TWEET
         req.add_field "Authorization", "Bearer #{bearer_token}"
 
         # ... and fetch the request.
-        #res = http.request(req)
+        res = http.request(req)
       end
       
       # If the bluesky handle has been passed ...
@@ -328,9 +328,6 @@ module TWEET
         # We grab the access tokens from the JSON response.
         access_jwt = JSON.parse( response.body )['accessJwt']
         did = JSON.parse( response.body )['did']
-        
-        puts access_jwt
-        puts did
         
         # We construct the link facets.
         facets = create_facets( answer.safe_tweet_text )
