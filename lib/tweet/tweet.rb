@@ -313,13 +313,18 @@ module TWEET
         req.add_field "Authorization", "Bearer #{bearer_token}"
 
         # ... and fetch the request.
-        res = http.request(req)
+        #res = http.request(req)
       end
       
       # If the bluesky handle has been passed ...
       if bluesky_handle
         
         puts "posting bluesky"
+        
+        puts "xxx#{bluesky_handle}xxx"
+        puts "xxx#{bluesky_app_password}xxx"
+        
+        
         
         # ... we attempt to authenticate.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.server.createSession' )
@@ -357,7 +362,7 @@ module TWEET
         # We attempt to post.
         uri = URI( 'https://bsky.social/xrpc/com.atproto.repo.createRecord' )
         headers = { 'Content-Type': 'application/json', 'Authorization': "Bearer #{access_jwt}" }
-        response = Net::HTTP.post( uri, body, headers )
+        #response = Net::HTTP.post( uri, body, headers )
       end
     end
   end
