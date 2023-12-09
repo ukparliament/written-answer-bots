@@ -1,0 +1,18 @@
+<li>
+	<%= content_tag( 'h2', link_to( written_statement.title, "https://questions-statements.parliament.uk/written-statements/detail/#{written_statement.made_on}/#{written_statement.uin}" ) ) %>
+	<%= content_tag( 'p', "Made on: #{written_statement.made_on}" ) %>
+	<%= content_tag( 'p', "UIN: #{written_statement.uin}" ) %>
+	<%= content_tag( 'p', "House: #{written_statement.house_name}" ) %>
+	<%= content_tag( 'p', "Member: #{written_statement.member_name}" ) %>
+	<%= content_tag( 'p', "Member role: #{written_statement.member_role}" ) %>
+	<%= content_tag( 'p', "Answering body: #{link_to( written_statement.answering_body_name, answering_body_show_url( :answering_body => written_statement.answering_body_id ) ) }".html_safe ) %>
+	
+	
+	
+	
+	<%= content_tag( 'p', "Posted to Mastodon: #{written_statement.posted_to_mastodon}" ) %>
+	<%= content_tag( 'p', "Posted to Bluesky: #{written_statement.posted_to_bluesky}" ) %>
+</li>
+
+
+	answering_body_id int not null,

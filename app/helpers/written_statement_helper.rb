@@ -1,0 +1,2 @@
+module WrittenStatementHelper
+end
