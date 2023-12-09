@@ -1,6 +1,8 @@
+drop table if exists written_statements;
 drop table if exists members;
 drop table if exists questions;
 drop table if exists answering_bodies;
+drop table if exists written_statements;
 
 create table answering_bodies (
 	id serial,
@@ -41,6 +43,22 @@ create table questions (
 	pertinent_date date not null,
 	answering_body_id int not null,
 	tweeted boolean default false,
+	constraint fk_answering_body foreign key (answering_body_id) references answering_bodies(id),
+	primary key (id)
+);
+
+create table written_statements (
+	id serial,
+	made_on date not null,
+	uin varchar(20) not null,
+	title varchar(255) not null,
+	house_name varchar(20) not null,
+	member_role varchar(255) not null,
+	member_id int not null,
+	answering_body_id int not null,
+	posted_to_mastodon boolean default false,
+	posted_to_bluesky boolean default false,
+	constraint fk_member foreign key (member_id) references members(id),
 	constraint fk_answering_body foreign key (answering_body_id) references answering_bodies(id),
 	primary key (id)
 );
