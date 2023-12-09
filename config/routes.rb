@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
+  get '/' => 'home#index', :as => 'root'
   get 'written-answers' => 'home#index', :as => 'home'
   
   get 'written-answers/members' => 'member#index', :as => 'member_list'
   
   get 'written-answers/answers' => 'answer#index', :as => 'answer_list'
   get 'written-answers/answers/:answer' => 'answer#show', :as => 'answer_show'
+  
+  get 'written-answers/written-statements' => 'written_statement#index', :as => 'written_statement_list'
   
   get 'written-answers/answering-bodies' => 'answering_body#index', :as => 'answering_body_list'
   get 'written-answers/answering-bodies/:answering_body' => 'answering_body#show', :as => 'answering_body_show'
