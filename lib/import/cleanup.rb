@@ -12,5 +12,16 @@ module CLEANUP
       # ...and destroy the record.
       question.destroy
     end
+    
+    # We find all written statements which have a made date earlier than two weeks ago.
+    written_statements = WrittenStatement.all.where( "made_on < ?", 2.weeks.ago )
+    puts "Cleaning up #{written_statements.size} written statements"
+  
+    # We loop through the written statements ...
+    written_statements.each do |written_statement|
+    
+      # ...and destroy the record.
+      written_statement.destroy
+    end
   end
 end
