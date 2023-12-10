@@ -53,6 +53,3 @@ module IMPORT_WRITTEN_STATEMENTS
     end
   end
 end
-
-
-#answering_body_mnis_id = written_statement['value']['answeringBodyId']
