@@ -336,7 +336,7 @@ module TWEET
         post = {
             "$type": "app.bsky.feed.post",
             "text": answer.safe_tweet_text,
-            "createdAt": Time.now.strftime('%Y-%m-%dT%H:%M:%S.%L%z'),
+            "createdAt": Time.now.iso8601,
             "facets": facets,
         }
 
