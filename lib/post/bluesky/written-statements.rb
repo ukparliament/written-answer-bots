@@ -74,7 +74,6 @@ module POST
         written_statement.save!
       else 
         puts post_text
-        
       end
       
       # We pause for two seconds.
