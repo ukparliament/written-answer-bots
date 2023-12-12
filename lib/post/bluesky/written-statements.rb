@@ -72,6 +72,9 @@ module POST
         # ... we mark the written statement as posted to Bluesky.
         written_statement.posted_to_bluesky = true
         written_statement.save!
+      else 
+        puts post_text
+        
       end
       
       # We pause for two seconds.
