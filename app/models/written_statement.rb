@@ -15,7 +15,13 @@ class WrittenStatement < ApplicationRecord
   
   def bluesky_post_text
     post_text = ''
-    post_text += self.title + '. ' if self.title
+    if self.title
+      if self.title.length > 100
+        post_text += self.title.truncate( 100 ) + ' '
+      else
+        post_text += self.title + '. '
+      end
+    end
     post_text += 'Statement made by ' + self.member_name + ' ' if self.member_name
     post_text += 'on behalf of the ' + self.answering_body_name + ' ' if self.answering_body_name
     post_text += self.url
