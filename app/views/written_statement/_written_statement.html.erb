@@ -1,5 +1,5 @@
 <li>
-	<%= content_tag( 'h2', link_to( written_statement.title, "https://questions-statements.parliament.uk/written-statements/detail/#{written_statement.made_on}/#{written_statement.uin}" ) ) %>
+	<%= content_tag( 'h2', link_to( written_statement.title, written_statement.url ) ) %>
 	<%= content_tag( 'p', "Made on: #{written_statement.made_on}" ) %>
 	<%= content_tag( 'p', "UIN: #{written_statement.uin}" ) %>
 	<%= content_tag( 'p', "House: #{written_statement.house_name}" ) %>
