@@ -3,7 +3,7 @@ class WrittenStatement < ApplicationRecord
   belongs_to :member
   belongs_to :answering_body
   
-  def mastondon_post_text
+  def mastodon_post_text
     post_text = ''
     post_text += self.title + '. ' if self.title
     post_text += 'Statement made by ' + self.member_name + ' ' if self.member_name
