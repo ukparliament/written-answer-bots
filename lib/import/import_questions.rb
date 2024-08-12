@@ -8,11 +8,12 @@ module IMPORT_QUESTIONS
     from_date = Date.yesterday
   
     # We construct the source URL.
-    source = "https://writtenquestions-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=100"
+    source = "https://questions-statements-api.parliament.uk/api/writtenquestions/questions?answeredWhenFrom=#{from_date}&take=100"
+    
     response = Net::HTTP.get_response( URI.parse( source ) )
     data = response.body
     json = JSON.parse( data )
-  
+    
     # We loop through each question returned ...
     json['results'].each do |question|
     
