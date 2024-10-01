@@ -270,7 +270,7 @@ module TWEET
       bearer_token = ENV['DCMS_BEARER']
       bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
       bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD'] 
-    when 117
+    when 7
       #consumer_key = ENV['MHCLG_CONSUMER_KEY']
       #consumer_secret = ENV['MHCLG_CONSUMER_SECRET']
       #access_token = ENV['MHCLG_ACCESS_TOKEN']

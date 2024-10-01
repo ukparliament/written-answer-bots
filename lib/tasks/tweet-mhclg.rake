@@ -6,5 +6,5 @@ include TWEET
 
 task :tweet_mhclg => :environment do
   puts "tweeting new answers from MHCLG"
-  tweet_set_up( 117 )
+  tweet_set_up( 7 )
 end
