@@ -269,7 +269,15 @@ module TWEET
       #access_secret = ENV['DCMS_ACCESS_SECRET']
       bearer_token = ENV['DCMS_BEARER']
       bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
-      bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD']
+      bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD'] 
+    when 117
+      #consumer_key = ENV['MHCLG_CONSUMER_KEY']
+      #consumer_secret = ENV['MHCLG_CONSUMER_SECRET']
+      #access_token = ENV['MHCLG_ACCESS_TOKEN']
+      #access_secret = ENV['MHCLG_ACCESS_SECRET']
+      #bearer_token = ENV['MHCLG_BEARER']
+      bluesky_handle = ENV['MHCLG_BLUESKY_HANDLE']
+      bluesky_app_password = ENV['MHCLG_BLUESKY_APP_PASSWORD']
     end
     
     # We find the answering body by its MNIS ID.
