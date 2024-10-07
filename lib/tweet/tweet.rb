@@ -275,7 +275,7 @@ module TWEET
       #consumer_secret = ENV['MHCLG_CONSUMER_SECRET']
       #access_token = ENV['MHCLG_ACCESS_TOKEN']
       #access_secret = ENV['MHCLG_ACCESS_SECRET']
-      #bearer_token = ENV['MHCLG_BEARER']
+      bearer_token = ENV['MHCLG_BEARER']
       bluesky_handle = ENV['MHCLG_BLUESKY_HANDLE']
       bluesky_app_password = ENV['MHCLG_BLUESKY_APP_PASSWORD']
     end
