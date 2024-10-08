@@ -88,7 +88,7 @@ module TWEET
       when 29
         bearer_token = ENV['DWP_BEARER']
         bluesky_handle = ENV['DWP_BLUESKY_HANDLE']
-        bluesky_app_password = ENV['DWP_BLUESKY_APP_PASSWORD']x
+        bluesky_app_password = ENV['DWP_BLUESKY_APP_PASSWORD']
         
       # Foreign, Commonwealth and Development Office.
       when 208
