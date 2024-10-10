@@ -1,0 +1,63 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Rspec tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - name: Set timezone
+      uses: MathRobin/timezone-action@v1.1
+      with:
+        timezoneLinux: "London"
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+    # change this to (see https://github.com/ruby/setup-ruby#versioning):
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.9.0'
+        cache: 'yarn'
+    - name: Setup the Rails application
+      env:
+        RAILS_ENV: test
+        # Rails verifies the time zone in DB is the same as the time zone of the Rails app
+        TZ: "London"
+      run: |
+        bundle install --no-deployment --jobs 4 --retry 3
+        cp config/database.github.yml config/database.yml
+        bundle exec rails db:setup
+        yarn --frozen-lockfile
+        # yarn build:css
+        # yarn build
+    - name: Run tests
+      run: bundle exec rspec
+      continue-on-error: true
+
