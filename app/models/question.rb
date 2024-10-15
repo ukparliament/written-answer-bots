@@ -41,6 +41,9 @@ class Question < ApplicationRecord
           end
         end
         
+        # We remove any hyphens from the word.
+        word.gsub!( "'", '' )
+        
         # We add the word to the subject hashtag.
         subject_hashtag += word
       end
