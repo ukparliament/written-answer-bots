@@ -36,7 +36,7 @@ class Question < ApplicationRecord
           # ... unless the second letter of the word is uppercase ...
           unless is_upper?( word[1] )
             
-            # ... we capatlise the first letter of the word.
+            # ... we capitalise the first letter of the word.
             word.capitalize!
           end
         end
