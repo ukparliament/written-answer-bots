@@ -1,9 +1,12 @@
-development:
+development: &development
   adapter: postgresql
   encoding: unicode
   database: written_answers
   host: localhost
   pool: 5
+test:
+  <<: *development
+  database: written_answers_test
 production:
   host: <%= ENV['DB_HOST'] %>
   port: 5432
