@@ -241,7 +241,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara
-  jbuilder (~> 2.7)
+  jbuilder (~> 2.13)
   listen (~> 3.3)
   pg
   puma (~> 5.0)
