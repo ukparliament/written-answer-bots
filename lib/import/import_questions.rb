@@ -63,9 +63,9 @@ module IMPORT_QUESTIONS
           # ... we check if there's an existing question with the same date tabled, uin and date_answer_corrected ...
           question = Question
             .all
-            .where( "date_tabled = '#{date_tabled.to_s}'" )
-            .where( "uin = '#{uin.to_s}'" )
-            .where( "date_answer_corrected = '#{date_answer_corrected.to_s}'" )
+            .where( "date_tabled = ?", date_tabled.to_s )
+            .where( "uin = ?", uin.to_s )
+            .where( "date_answer_corrected = ?", date_answer_corrected.to_s )
             .first
           
           # ... and we set the pertinent date to the date the answer was corrected.
@@ -77,8 +77,8 @@ module IMPORT_QUESTIONS
           # ... we check if there's an existing question with the same date tabled and uin ...
           question = Question
             .all
-            .where( "date_tabled = '#{date_tabled.to_s}'" )
-            .where( "uin = '#{uin.to_s}'" )
+            .where( "date_tabled = ?", date_tabled.to_s )
+            .where( "uin = ?", uin.to_s )
             .first
           
           # ... and we set the pertinent date to the date the question was answered.
