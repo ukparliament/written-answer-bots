@@ -232,7 +232,7 @@ module TWEET
         answer_text = parser.escape( answer_text )
         
         # ... we construct the uri ...
-        uri = URI( "https://botsin.space/api/v1/statuses?status=#{answer_text}" )
+        uri = URI( "https://mastodon.me.uk/api/v1/statuses?status=#{answer_text}" )
 
         # ... create the client ...
         http = Net::HTTP.new( uri.host, uri.port )
