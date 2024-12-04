@@ -32,7 +32,7 @@ module POST
       post_text = parser.escape( post_text )
       
       # ... we construct the uri ...
-      uri = URI( "https://botsin.space/api/v1/statuses?status=#{post_text}" )
+      uri = URI( "https://mastodon.me.uk/api/v1/statuses?status=#{post_text}" )
 
       # ... create the client ...
       http = Net::HTTP.new( uri.host, uri.port )
