@@ -246,7 +246,7 @@ module TWEET
         req.add_field "Authorization", "Bearer #{bearer_token}"
 
         # ... and make the request.
-        res = http.request(req)
+        #res = http.request(req)
       end
       
       # Posting to Bluesky.
