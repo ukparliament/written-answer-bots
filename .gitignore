@@ -8,6 +8,10 @@
 /lib/tweet/tokens.rb
 .DS_Store
 
+
+data
+latest.dump
+
 # Ignore bundler config.
 /.bundle
 
