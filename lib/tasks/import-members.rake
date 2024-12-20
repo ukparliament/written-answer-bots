@@ -1,8 +1,8 @@
 # We require the import members code.
-require 'import/import_members'
+require 'import/members'
 
 # We include import code from module.
-include IMPORT_MEMBERS
+include Import::Members
 
 # We import members.
 task :import_members => :environment do

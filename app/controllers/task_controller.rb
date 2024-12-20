@@ -1,13 +1,13 @@
 # We require the code.
-require 'import/import_members'
-require 'import/import_questions'
-require 'import/cleanup'
+require 'import/members'
+require 'import/questions'
+require 'cleanup'
 require 'tweet/tweet'
 
 # We include code from modules.
-include IMPORT_MEMBERS
-include IMPORT_QUESTIONS
-include CLEANUP
+include Import::Members
+include Import::Questions
+include Cleanup
 include TWEET
 
 class TaskController < ApplicationController
