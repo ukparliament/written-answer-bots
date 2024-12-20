@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 require 'uri'
 
-module TWEET
+module Tweet
 
   # We set up the authentication tokens required to post to Bluesky and Mastodon for a given answering body.
   # Noting that this is the MNIS answering body ID, not the MNIS department ID.
