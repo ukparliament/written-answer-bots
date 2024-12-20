@@ -41,7 +41,7 @@ rvm install 3.3.6 --with-openssl-dir=[Put the openssl install dir here]
 You might be able to get away with this if running `bash`
 
 ```
-rvm install 3.2.2 --with-openssl-dir=$(brew --prefix openssl@3)
+rvm install 3.6.6 --with-openssl-dir=$(brew --prefix openssl@3)
 ```
 
 ### Javascript
