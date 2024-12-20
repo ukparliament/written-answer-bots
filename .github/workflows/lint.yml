@@ -31,5 +31,5 @@ jobs:
           brakeman -q -w2
 
       - name: Run zeitwerk checks
-        run: rails zeitwerk:check
+        run: bundle exec rails zeitwerk:check
       
