@@ -1,8 +1,8 @@
 # We require the import members code.
-require 'import/cleanup'
+require 'cleanup'
 
 # We include import code from module.
-include CLEANUP
+include Cleanup
 
 task :cleanup => :environment do
   puts "cleaning up the database"

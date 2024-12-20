@@ -1,4 +1,4 @@
-module CLEANUP
+module Cleanup
   
   def cleanup
     
