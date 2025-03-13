@@ -9,8 +9,6 @@ gem 'rails', '~> 8.0.2'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
@@ -20,6 +18,9 @@ gem 'bootsnap', require: false
 
 # Makes logs a bit more managable
 gem 'lograge'
+
+# Exokucut dependency for updates
+gem "irb"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
