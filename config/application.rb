@@ -35,7 +35,6 @@ module WrittenAnswers
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.assets.enabled = false
 
     # If running scaffold, don't generate all the stuff which isn't used
     config.generators do |g|
