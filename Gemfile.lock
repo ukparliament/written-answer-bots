@@ -214,6 +214,7 @@ GEM
     request_store (1.7.0)
       rack (>= 1.4)
     rexml (3.4.1)
+    rollbar (3.6.1)
     rspec-core (3.13.3)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.3)
@@ -282,6 +283,7 @@ DEPENDENCIES
   puma
   rack-mini-profiler
   rails (~> 8.0.2)
+  rollbar
   rspec-rails
   selenium-webdriver
   tzinfo-data

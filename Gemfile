@@ -19,8 +19,11 @@ gem 'bootsnap', require: false
 # Makes logs a bit more managable
 gem 'lograge'
 
-# Exokucut dependency for updates
+# Explicit dependency for updates
 gem "irb"
+
+# For exception handling
+gem "rollbar"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
