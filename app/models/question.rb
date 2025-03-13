@@ -1,3 +1,35 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id                     :integer          not null, primary key
+#  answer_text            :text             not null
+#  comparable_answer_text :text
+#  date_answer_corrected  :date
+#  date_answer_holding    :date
+#  date_answered          :date             not null
+#  date_tabled            :date             not null
+#  heading                :string(255)
+#  house                  :string(20)       not null
+#  is_correcting_answer   :boolean          default(FALSE)
+#  is_holding_answer      :boolean          default(FALSE)
+#  is_named_day           :boolean          default(FALSE)
+#  member_interest        :boolean          default(FALSE)
+#  original_answer_text   :text
+#  pertinent_date         :date             not null
+#  question_text          :text             not null
+#  tweeted                :boolean          default(FALSE)
+#  uin                    :string(20)       not null
+#  answering_body_id      :integer          not null
+#  answering_member_id    :integer          not null
+#  asking_member_id       :integer          not null
+#  correcting_member_id   :integer
+#  question_id            :integer          not null
+#
+# Foreign Keys
+#
+#  fk_answering_body  (answering_body_id => answering_bodies.id)
+#
 class Question < ApplicationRecord
   
   belongs_to :answering_body

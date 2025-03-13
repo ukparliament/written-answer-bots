@@ -4,13 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: '.ruby-version'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.2'
+gem 'rails', '~> 8.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
 gem 'puma'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
@@ -20,6 +18,12 @@ gem 'bootsnap', require: false
 
 # Makes logs a bit more managable
 gem 'lograge'
+
+# Explicit dependency for updates
+gem "irb"
+
+# For exception handling
+gem "rollbar"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -33,6 +37,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'rack-mini-profiler'
   gem 'listen'
+  gem 'annotaterb'
 end
 
 group :test do

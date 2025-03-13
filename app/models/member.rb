@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id           :integer          not null, primary key
+#  display_name :string(255)      not null
+#  handle       :string(255)
+#  mnis_id      :integer          not null
+#
 class Member < ApplicationRecord
   
   def twitter_reference

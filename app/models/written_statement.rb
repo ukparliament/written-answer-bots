@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: written_statements
+#
+#  id                 :integer          not null, primary key
+#  house_name         :string(20)       not null
+#  made_on            :date             not null
+#  member_role        :string(255)      not null
+#  posted_to_bluesky  :boolean          default(FALSE)
+#  posted_to_mastodon :boolean          default(FALSE)
+#  title              :string(255)      not null
+#  uin                :string(20)       not null
+#  answering_body_id  :integer          not null
+#  member_id          :integer          not null
+#
+# Foreign Keys
+#
+#  fk_answering_body  (answering_body_id => answering_bodies.id)
+#  fk_member          (member_id => members.id)
+#
 class WrittenStatement < ApplicationRecord
   
   belongs_to :member
