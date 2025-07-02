@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'written-answers/answering-bodies' => 'answering_body#index', :as => 'answering_body_list'
   get 'written-answers/answering-bodies/:answering_body' => 'answering_body#show', :as => 'answering_body_show'
   
+  get 'written-answers/meta' => 'meta#index', :as => 'meta_list'
+  get 'written-answers/meta/cookies' => 'meta#cookies', :as => 'meta_cookies'
+  
   # An unfortuante duplication of the above.
   # Logs show someone is subscribing to the RSS at:
   # https://written-questions.herokuapp.com/answering-bodies/{answering_body.id}.rss
