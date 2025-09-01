@@ -1,0 +1,9 @@
+<%= render :partial => 'answering_body/nav' %>
+
+<%= list_item_count_sentence( 'written answer', @answers.size ) %>
+
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<ol class="unnumbered margin-top-20" role="list">
+	<%= render :partial => 'answer/answer', :collection => @answers %>
+</ol>
