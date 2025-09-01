@@ -10,5 +10,11 @@ class WrittenStatementController < ApplicationController
         ORDER BY ws.made_on DESC
       "
     )
+    
+    @page_title = 'Written statements'
+    @description = 'Written statements.'
+    @rss_url = written_statement_list_url( :format => 'rss' )
+    @crumb << {label: @page_title, url: nil}
+    @section = 'written-statements'
   end
 end
