@@ -34,6 +34,12 @@ class Question < ApplicationRecord
   
   belongs_to :answering_body
   
+  def question_type
+    question_type = 'Ordinary'
+    question_type = 'Named day' if self.is_named_day
+    question_type
+  end
+  
   def asking_member
     Member.all.where( "mnis_id = #{self.asking_member_id}" ).first
   end
@@ -149,5 +155,9 @@ class Question < ApplicationRecord
     tweet_text = self.title
     tweet_text += ' '
     tweet_text += "https://questions-statements.parliament.uk/written-questions/detail/#{self.date_tabled}/#{self.uin}"
+  end
+  
+  def url
+    "https://questions-statements.parliament.uk/written-questions/detail/#{self.date_tabled}/#{self.uin}"
   end
 end
