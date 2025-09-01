@@ -1,4 +1,1 @@
-<tr>
-	<%= content_tag( 'td', answering_body.mnis_id ) %>
-	<%= content_tag( 'td', link_to( answering_body.name, answering_body_show_url( :answering_body => answering_body.mnis_id ) ) ) %>
-</tr>
+<%= content_tag( 'li', link_to( answering_body.name, answering_body_show_url( :answering_body => answering_body.mnis_id ) ) ) %>

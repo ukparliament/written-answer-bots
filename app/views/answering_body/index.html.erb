@@ -1,13 +1,4 @@
-<%= content_tag( 'h1', 'Answering bodies' ) %>
-
-<table>
-	<thead>
-		<tr>
-			<%= content_tag( 'td', 'MNIS ID' ) %>
-			<%= content_tag( 'td', 'Name' ) %>
-		</tr>
-	</thead>
-	<tbody>
-		<%= render :partial => 'answering_body', :collection => @answering_bodies %>
-	</tbody>
-</table>
+<%= list_item_count_sentence( 'answering body', @answering_bodies.size ) %>
+<ol class="unnumbered">
+	<%= render :partial => 'answering_body', :collection => @answering_bodies %>
+</ol>

@@ -1,1 +1,19 @@
-<li><%= answer.pertinent_date %> <%= link_to( answer.title, answer_show_url( :answer => answer ) ) %></li>
+<li class="list-group-item">
+	<%= content_tag( 'h2', link_to( answer.title, answer.url ) ) %>
+	<%= content_tag( 'p', "Tabled in: House of #{answer.house}" ) %>
+	<%= content_tag( 'p', "Tabled on: #{answer.date_tabled.strftime( $DATE_DISPLAY_FORMAT )}" ) %>
+	<%= content_tag( 'p', "Tabled by: #{answer.asking_member.display_name}" ) %>
+	<%= content_tag( 'p', "Question type: #{answer.question_type}" ) %>
+	<%= content_tag( 'p', "Interest declared: #{answer.member_interest}" ) %>
+	<% if answer.is_correcting_answer -%>
+		<%= content_tag( 'p', "Corrected on: #{answer.date_answer_corrected.strftime( $DATE_DISPLAY_FORMAT )}" ) %>
+		<%= content_tag( 'p', "Corrected by: #{answer.correcting_member.display_name}" ) %>
+		<%= content_tag( 'p', "Corrected on behalf of: #{link_to( answer.answering_body.name, answering_body_show_url( :answering_body => answer.answering_body.mnis_id ) )}".html_safe ) %>
+	<% else -%>
+		<%= content_tag( 'p', "Answered on: #{answer.date_answered.strftime( $DATE_DISPLAY_FORMAT )}" ) %>
+		<%= content_tag( 'p', "Answered by: #{answer.answering_member.display_name}" ) %>
+		<%= content_tag( 'p', "Answered on behalf of: #{link_to( answer.answering_body.name, answering_body_show_url( :answering_body => answer.answering_body.mnis_id ) )}".html_safe ) %>
+	<% end -%>
+	<%= content_tag( 'p', "UIN: #{answer.uin}" ) %>
+	<%= content_tag( 'p', "Posted: #{answer.tweeted}" ) %>
+</li>

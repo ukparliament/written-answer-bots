@@ -1,6 +1,6 @@
 <tr>
-	<%= content_tag( 'td', member.mnis_id ) %>
 	<%= content_tag( 'td', member.display_name ) %>
+	<%= content_tag( 'td', member.mnis_id ) %>
 	<td>
 		<% if member.handle -%>
 			<%= link_to( "@" + member.handle, "https://twitter.com/#{member.handle}" ) %>

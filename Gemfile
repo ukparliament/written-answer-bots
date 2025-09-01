@@ -10,6 +10,12 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 
+# Modern asset management
+gem "propshaft"
+
+# For local development
+gem "library_design", github: "ukparliament/design-assets", glob: 'library_design/*.gemspec', tag: "0.2.20"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 

@@ -1,11 +1,10 @@
-<li>
+<li class="list-group-item">
 	<%= content_tag( 'h2', link_to( written_statement.title, written_statement.url ) ) %>
-	<%= content_tag( 'p', "Made on: #{written_statement.made_on}" ) %>
+	<%= content_tag( 'p', "Made in: House of #{written_statement.house_name}" ) %>
+	<%= content_tag( 'p', "Made on: #{written_statement.made_on.strftime( $DATE_DISPLAY_FORMAT )}" ) %>
+	<%= content_tag( 'p', "Made by: #{written_statement.member.display_name} as #{written_statement.member_role}" ) %>
+	<%= content_tag( 'p', "Made on behalf of: #{link_to( written_statement.answering_body.name, answering_body_show_url( :answering_body => written_statement.answering_body.mnis_id ) ) }".html_safe ) %>
 	<%= content_tag( 'p', "UIN: #{written_statement.uin}" ) %>
-	<%= content_tag( 'p', "House: #{written_statement.house_name}" ) %>
-	<%= content_tag( 'p', "Member: #{written_statement.member_name}" ) %>
-	<%= content_tag( 'p', "Member role: #{written_statement.member_role}" ) %>
-	<%= content_tag( 'p', "Answering body: #{link_to( written_statement.answering_body_name, answering_body_show_url( :answering_body => written_statement.answering_body_id ) ) }".html_safe ) %>
 	<%= content_tag( 'p', "Posted to Mastodon: #{written_statement.posted_to_mastodon}" ) %>
 	<%= content_tag( 'p', "Posted to Bluesky: #{written_statement.posted_to_bluesky}" ) %>
 </li>
