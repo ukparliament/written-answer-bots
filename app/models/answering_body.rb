@@ -10,6 +10,9 @@ class AnsweringBody < ApplicationRecord
   
   has_many :questions,
     -> { order( 'questions.pertinent_date desc' ) }
+  
+  has_many :written_statements,
+    -> { order( 'written_statements.made_on desc' ) }
     
   def untweeted_answers
     Question.all.where( 'answering_body_id = ?', self.id ).where( 'tweeted is false' )
