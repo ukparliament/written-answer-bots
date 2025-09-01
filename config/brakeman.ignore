@@ -1,0 +1,127 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "923a6a3b4a92a1f5e8aa8001598d8b8275a92b0af03ae8fbc96c2fbb4a0b44e0",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/written_statement/_written_statement.html.erb",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(AnsweringBody.new.title, AnsweringBody.new.url)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "AnsweringBodyWrittenStatementController",
+          "method": "index",
+          "line": 17,
+          "file": "app/controllers/answering_body_written_statement_controller.rb",
+          "rendered": {
+            "name": "answering_body_written_statement/index",
+            "file": "app/views/answering_body_written_statement/index.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "answering_body_written_statement/index",
+          "line": 8,
+          "file": "app/views/answering_body_written_statement/index.html.erb",
+          "rendered": {
+            "name": "written_statement/_written_statement",
+            "file": "app/views/written_statement/_written_statement.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "written_statement/_written_statement"
+      },
+      "user_input": "AnsweringBody.new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "954170f939ad23fa5b79352460fe95ac9fecd2418e632e628f646292620c95b3",
+      "check_name": "LinkToHref",
+      "message": "Potentially unsafe model attribute in `link_to` href",
+      "file": "app/views/answer/_answer.html.erb",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(Question.new.title, Question.new.url)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "AnswerController",
+          "method": "index",
+          "line": 10,
+          "file": "app/controllers/answer_controller.rb",
+          "rendered": {
+            "name": "answer/index",
+            "file": "app/views/answer/index.html.erb"
+          }
+        },
+        {
+          "type": "template",
+          "name": "answer/index",
+          "line": 6,
+          "file": "app/views/answer/index.html.erb",
+          "rendered": {
+            "name": "answer/_answer",
+            "file": "app/views/answer/_answer.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "answer/_answer"
+      },
+      "user_input": "Question.new.url",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "d6b17f48ad68b252189f181fe6cc326c7da4421f966f24ce2b4e34c280512007",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/layouts/application.html.erb",
+      "line": 10,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "AnsweringBody.find_by_mnis_id(params[:answering_body]).name",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "AnsweringBodyAnswerController",
+          "method": "index",
+          "line": 17,
+          "file": "app/controllers/answering_body_answer_controller.rb",
+          "rendered": {
+            "name": "layouts/application",
+            "file": "app/views/layouts/application.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "layouts/application"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    }
+  ],
+  "brakeman_version": "7.1.0"
+}
