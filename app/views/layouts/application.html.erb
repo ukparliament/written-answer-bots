@@ -1,48 +1,15 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Written answers</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-prefetch" content="false">
-    <style>
-    body {font-family: system-ui,sans-serif;padding:1rem;max-width:42rem;line-height:1.4;margin:1rem auto;font-size: 1.2rem;}
-    a {text-decoration:none;}
-    a:hover {text-decoration:underline;}
-    h1, h2, h3 {font-weight:normal;}
-    ol.no-numbers {
-  list-style: none;
-  padding-left:0;
-}
-ol.no-numbers li {
-	margin-bottom: .5em;
-}
-    </style>
-  </head>
-  <body>
-  
-  <header>
-  <nav>
-
-	<%= content_tag( 'span', link_to( 'Answering bodies', answering_body_list_url ) ) %>
-	&nbsp;
-	<%= content_tag( 'span', link_to( 'Members', member_list_url ) ) %>
-
-  </nav>
-  </header>
-  
-  <main>
-    <%= yield %>
-    </main>
-    
-    <footer>
-	
-		<p>
-			<a href="https://www.parliament.uk/site-information/accessibility/">Accessibility statement</a>
-			-
-			<%= link_to( 'Cookies', meta_cookies_url )  %>
-			-
-			<a href="https://commonslibrary.parliament.uk/privacy-policy/">Privacy notice</a>
-		</p>
-    </footer>
-  </body>
+<html lang="en-GB">
+	<head>
+		<%= render :partial => 'library_design/head/head' %>
+		<%= tag( 'base', :href => 'https://api.parliament.uk/written-answers' ) if Rails.env.production? %>
+	</head>
+	<body class="section-<%= @section %> subsection-<%= @subsection %> brand-bicameral">
+		<%= render :partial => 'layouts/header/header' %>
+		<main class="container block block-page" id="main-content">
+			<h1><%= @multiline_page_title || @page_title || $SITE_TITLE %></h1>
+			<%= yield %>
+		</main>
+		<%= render 'library_design/footer' %>
+	</body>
 </html>
