@@ -1,5 +1,7 @@
-<%= content_tag( 'h1', 'Written statements' ) %>
+<%= list_item_count_sentence( 'written statement', @written_statements.size ) %>
 
-<ol class="no-numbers" role="list">
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<ol class="unnumbered margin-top-20" role="list">
 	<%= render :partial => 'written_statement', :collection => @written_statements %>
 </ol>

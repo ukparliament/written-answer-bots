@@ -1,5 +1,7 @@
-<h1>Latest 20 answers</h1>
+<%= list_item_count_sentence( 'written answer', @answers.size ) %>
 
-<ol class="no-numbers" role="list">
+<%= render :partial => 'library_design/feeds/feeds' %>
+
+<ol class="unnumbered margin-top-20" role="list">
 	<%= render :partial => 'answer', :collection => @answers %>
 </ol>

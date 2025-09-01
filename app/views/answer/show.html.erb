@@ -1,9 +1,7 @@
-<%= content_tag( 'h1', @answer.title ) %>
-
-<table>
+<table class="table key-value">
 	<tbody>
 		<tr>
-			<%= content_tag( 'td', 'Heading:' ) %>
+			<%= content_tag( 'td', 'Heading' ) %>
 			<% if @answer.heading -%>
 				<%= content_tag( 'td', @answer.heading ) %>
 			<% else -%>
@@ -11,183 +9,58 @@
 			<% end -%>
 		</tr>
 		<tr>
-			<%= content_tag( 'td', 'Question ID:' ) %>
-			<%= content_tag( 'td', @answer.question_id ) %>
+			<%= content_tag( 'td', 'Tabled in' ) %>
+			<%= content_tag( 'td', "House of #{@answer.house}" ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'td', 'UIN:' ) %>
+			<%= content_tag( 'td', 'Tabled on' ) %>
+			<%= content_tag( 'td', @answer.date_tabled.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'td', 'Tabled by' ) %>
+			<%= content_tag( 'td', @answer.asking_member.display_name ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'td', 'Question type' ) %>
+			<%= content_tag( 'td', @answer.question_type ) %>
+		</tr>
+		<tr>
+			<%= content_tag( 'td', 'Interest declared' ) %>
+			<%= content_tag( 'td', @answer.member_interest ) %>
+		</tr>
+		<% if @answer.is_correcting_answer -%>
+			<tr>
+				<%= content_tag( 'td', 'Corrected on' ) %>
+				<%= content_tag( 'td', @answer.date_answer_corrected.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+			</tr>
+			<tr>
+				<%= content_tag( 'td', 'Corrected by' ) %>
+				<%= content_tag( 'td', @answer.correcting_member.display_name ) %>
+			</tr>
+			<tr>
+				<%= content_tag( 'td', 'Corrected on behalf of' ) %>
+				<%= content_tag( 'td', link_to( @answer.answering_body.name, answering_body_show_url( :answering_body => @answer.answering_body.mnis_id ) ) ) %>
+			</tr>
+		<% else -%>
+			<tr>
+				<%= content_tag( 'td', 'Answered on' ) %>
+				<%= content_tag( 'td', @answer.date_answered.strftime( $DATE_DISPLAY_FORMAT ) ) %>
+			</tr>
+			<tr>
+				<%= content_tag( 'td', 'Answered by' ) %>
+				<%= content_tag( 'td', @answer.answering_member.display_name ) %>
+			</tr>
+			<tr>
+				<%= content_tag( 'td', 'Answered on behalf of' ) %>
+				<%= content_tag( 'td', link_to( @answer.answering_body.name, answering_body_show_url( :answering_body => @answer.answering_body.mnis_id ) ) ) %>
+			</tr>
+		<% end -%>
+		<tr>
+			<%= content_tag( 'td', 'UIN' ) %>
 			<%= content_tag( 'td', @answer.uin ) %>
 		</tr>
 		<tr>
-			<%= content_tag( 'td', 'House:' ) %>
-			<%= content_tag( 'td', @answer.house ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Date tabled:' ) %>
-			<%= content_tag( 'td', @answer.date_tabled ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Asking Member ID:' ) %>
-			<%= content_tag( 'td', @answer.asking_member_id ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Asking Member display name:' ) %>
-			<td>
-				<% if @answer.asking_member -%>
-					<%= @answer.asking_member.display_name %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Asking Member handle:' ) %>
-			<td>
-				<% if @answer.asking_member -%>
-					<%= @answer.asking_member.handle %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Asking Member Twitter reference:' ) %>
-			<td>
-				<% if @answer.asking_member -%>
-					<%= @answer.asking_member.twitter_reference %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Member interest:' ) %>
-			<%= content_tag( 'td', @answer.member_interest ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Question text:' ) %>
-			<%= content_tag( 'td', @answer.question_text ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Is named day:' ) %>
-			<%= content_tag( 'td', @answer.is_named_day ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Date of holding answer:' ) %>
-			<%= content_tag( 'td', @answer.date_answer_holding ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Date answered:' ) %>
-			<%= content_tag( 'td', @answer.date_answered ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Date answer corrected:' ) %>
-			<%= content_tag( 'td', @answer.date_answer_corrected ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Is holding answer:' ) %>
-			<%= content_tag( 'td', @answer.is_holding_answer ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Is correcting answer:' ) %>
-			<%= content_tag( 'td', @answer.is_correcting_answer ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering Member ID:' ) %>
-			<%= content_tag( 'td', @answer.answering_member_id ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering Member display name:' ) %>
-			<td>
-				<% if @answer.answering_member -%>
-					<%= @answer.answering_member.display_name %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>	
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering Member handle:' ) %>
-			<td>
-				<% if @answer.answering_member -%>
-					<%= @answer.answering_member.handle %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering Member Twitter reference:' ) %>
-			<td>
-				<% if @answer.answering_member -%>
-					<%= @answer.answering_member.twitter_reference %>
-				<% else -%>
-					Member not imported
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Correcting Member ID:' ) %>
-			<%= content_tag( 'td', @answer.correcting_member_id ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Correcting Member display name:' ) %>
-			<td>
-				<% if @answer.correcting_member_id -%>
-					<% if @answer.correcting_member -%>
-						<%= content_tag( 'td', @answer.correcting_member.display_name ) %>
-					<% else -%>
-						Member not imported
-					<% end -%>
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Correcting Member handle:' ) %>
-			<td>
-				<% if @answer.correcting_member_id -%>
-					<% if @answer.correcting_member -%>
-						<%= content_tag( 'td', @answer.correcting_member.handle ) %>
-					<% else -%>
-						Member not imported
-					<% end -%>
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Correcting Member Twitter reference:' ) %>
-			<td>
-				<% if @answer.correcting_member_id -%>
-					<% if @answer.correcting_member -%>
-						<%= content_tag( 'td', @answer.correcting_member.twitter_reference ) %>
-					<% else -%>
-						Member not imported
-					<% end -%>
-				<% end -%>
-			</td>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answer text:' ) %>
-			<%= content_tag( 'td', @answer.answer_text ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Original answer text:' ) %>
-			<%= content_tag( 'td', @answer.original_answer_text ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Comparable answer text:' ) %>
-			<%= content_tag( 'td', @answer.comparable_answer_text ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering body ID:' ) %>
-			<%= content_tag( 'td', @answer.answering_body.mnis_id ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Answering body name:' ) %>
-			<%= content_tag( 'td', @answer.answering_body.name ) %>
-		</tr>
-		<tr>
-			<%= content_tag( 'td', 'Tweeted:' ) %>
+			<%= content_tag( 'td', 'Posted' ) %>
 			<%= content_tag( 'td', @answer.tweeted ) %>
 		</tr>
 	</tbody>
