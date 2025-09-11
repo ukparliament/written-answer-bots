@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/ukparliament/design-assets.git
-  revision: c07a909740ccc5f064298130966fe3d12e572298
-  tag: 0.2.20
+  revision: 97cb97e751ee8843bb647d106d0322d55e83eb2e
+  tag: 0.3.0
   glob: library_design/*.gemspec
   specs:
     library_design (0.2.17)
@@ -88,7 +88,7 @@ GEM
       activesupport (>= 6.0.0)
     base64 (0.3.0)
     benchmark (0.4.1)
-    bigdecimal (3.2.2)
+    bigdecimal (3.2.3)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -104,7 +104,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.3.5)
-    connection_pool (2.5.3)
+    connection_pool (2.5.4)
     crass (1.0.6)
     date (3.4.1)
     diff-lcs (1.6.2)
@@ -181,7 +181,7 @@ GEM
     puma (7.0.2)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.0)
+    rack (3.2.1)
     rack-cors (3.0.0)
       logger
       rack (>= 3.0.14)
@@ -235,7 +235,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    rexml (3.4.2)
+    rexml (3.4.4)
     rollbar (3.6.2)
     rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
@@ -254,7 +254,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.5)
-    rubyzip (3.0.2)
+    rubyzip (3.1.0)
     securerandom (0.4.1)
     selenium-webdriver (4.35.0)
       base64 (~> 0.2)
