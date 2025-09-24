@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   $SITE_TITLE = 'Written Statements and Answers'
   
   $DATE_DISPLAY_FORMAT = '%-d %B %Y'
+  
+  $TOGGLE_PORTCULLIS = ENV.fetch( "TOGGLE_PORTCULLIS", 'off' )
 
 	def render_404
 		render file: "public/404.html", status: :not_found, layout: false
