@@ -11,20 +11,15 @@
  
  
 /* Main navigation active states */
-body.section-written-answers nav#header-nav a.written-answers {
-	border-bottom-color: #fff;
-}
-body.section-answering-bodies nav#header-nav a.answering-bodies {
-	border-bottom-color: #fff;
-}
+body.section-written-answers nav#header-nav a.written-answers,
+body.section-answering-bodies nav#header-nav a.answering-bodies,
 body.section-written-statements nav#header-nav a.written-statements {
 	border-bottom-color: #fff;
 }
 
+
 /* Secondary navigation active states */
-body.subsection-answers .subnav a.answers {
-	border-bottom-color: #CBC9CD;
-}
+body.subsection-answers .subnav a.answers,
 body.subsection-written-statements .subnav a.written-statements {
 	border-bottom-color: #CBC9CD;
 }
