@@ -8,6 +8,7 @@ class AnsweringBodyAnswerController < ApplicationController
     @page_title = "#{@answering_body.name} - written answers"
     @multiline_page_title = "#{@answering_body.name} <span class='subhead'>Written answers</span>".html_safe
     @description = "Written answers from the #{@answering_body.name}."
+    @canonical_url = answering_body_show_url
     @rss_url = answering_body_answer_list_url( :format => 'rss' )
     @crumb << {label: 'Answering bodies', url: answering_body_list_url}
     @crumb << {label: @answering_body.name, url: answering_body_show_url}
