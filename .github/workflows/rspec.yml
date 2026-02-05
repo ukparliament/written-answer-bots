@@ -46,7 +46,8 @@ jobs:
         # Rails verifies the time zone in DB is the same as the time zone of the Rails app
         TZ: "London"
       run: |
-        bundle install --no-deployment --jobs 4 --retry 3
+        bundle config set deployment false
+        bundle install --jobs 4 --retry 3
         cp config/database.github.yml config/database.yml
         bundle exec rails db:setup
     - name: Run tests
