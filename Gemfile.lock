@@ -340,7 +340,7 @@ DEPENDENCIES
   propshaft
   puma
   rack-mini-profiler
-  rails (~> 8.1.1)
+  rails (~> 8.1.2)
   rollbar
   rspec-rails
   selenium-webdriver
