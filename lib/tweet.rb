@@ -36,17 +36,17 @@ module Tweet
         bluesky_handle = ENV['CO_BLUESKY_HANDLE']
         bluesky_app_password = ENV['CO_BLUESKY_APP_PASSWORD']
         
-      # Business and Trade.
-      when 214
-        bearer_token = ENV['DBT_BEARER']
-        bluesky_handle = ENV['DBT_BLUESKY_HANDLE']
-        bluesky_app_password = ENV['DBT_BLUESKY_APP_PASSWORD']
+      # Business, Innovation, Science and Trade
+      when 220
+        bearer_token = ENV['DBIST_BEARER']
+        bluesky_handle = ENV['DBIST_BLUESKY_HANDLE']
+        bluesky_app_password = ENV['DBIST_BLUESKY_APP_PASSWORD']
         
-      # Culture, Media and Sport.
-      when 217
-        bearer_token = ENV['DCMS_BEARER']
-        bluesky_handle = ENV['DCMS_BLUESKY_HANDLE']
-        bluesky_app_password = ENV['DCMS_BLUESKY_APP_PASSWORD']
+      # Digital, Culture, Media and Sport.
+      when 10
+        bearer_token = ENV['DDCMS_BEARER']
+        bluesky_handle = ENV['DDCMS_BLUESKY_HANDLE']
+        bluesky_app_password = ENV['DDCMS_BLUESKY_APP_PASSWORD']
         
       # Department for Environment, Food and Rural Affairs.
       when 13
