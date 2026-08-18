@@ -4,7 +4,7 @@ require 'tweet'
 # We include tweet code from module.
 include Tweet
 
-task :tweet_dcms => :environment do
+task :tweet_ddcms => :environment do
   puts "tweeting new answers from DCMS"
   tweet_set_up( 217 )
 end
