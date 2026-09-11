@@ -5,7 +5,7 @@ ruby file: '.tool-versions'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 8.1.2'
-gem 'json', '~>2'
+gem 'json', '~>3'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
